@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      { "endOfLine": "auto" },
+      { "usePrettierrc": true }
+    ], // Includes .prettierrc.js rules
+    // We will use TypeScript's types for component props instead
+    "react/prop-types": "off",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    // No need to import React when using Next.js
+    "react/react-in-jsx-scope": "off",
+    // This rule is not compatible with Next.js's <Link /> components
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/img-redundant-alt": "off",
+    "react/jsx-no-comment-textnodes": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    // Why would you want unused vars?
+    "@typescript-eslint/no-unused-vars": ["warn"]
+    // I suggest this setting for requiring return types on functions only where useful
+    // '@typescript-eslint/explicit-function-return-type': [
+    //   'warn',
+    //   {
+    //     allowExpressions: true,
+    //     allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+    //   },
+    // ],
+  }
+}

@@ -3,10 +3,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-interface Props {
-  className?: string;
-}
-
 export const PrimaryLogo: FC = () => {
   const router = useRouter();
 

@@ -37,7 +37,7 @@ body {
 }
 
 /* Button */
-.btn-primary {
+/* .btn-primary {
   @apply bg-primary text-white border-primary hover:bg-primaryDark;
 }
 
@@ -59,7 +59,7 @@ body {
 
 .btn-large {
   @apply px-6 py-3 text-lg;
-}
+} */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

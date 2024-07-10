@@ -1,11 +1,12 @@
-import { Typography as AntdTypography, TypographyProps } from 'antd';
+import { Typography as AntdTypography } from 'antd';
 import { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
-interface CustomTypographyProps extends TypographyProps {
+interface CustomTypographyProps {
   variant?: 'title' | 'body' | 'caption' | 'header';
   color?: 'primary' | 'secondary' | 'error' | 'default';
-  children: ReactNode;
+  className?: string;
+  children?: ReactNode;
 }
 
 const variantClasses: Record<string, string> = {
@@ -24,6 +25,7 @@ const colorClasses: Record<string, string> = {
 
 const Typography: FC<CustomTypographyProps> = ({
   children,
+  className,
   variant = 'body',
   color = 'default',
   ...props
@@ -31,7 +33,7 @@ const Typography: FC<CustomTypographyProps> = ({
   const classes = classNames(variantClasses[variant], colorClasses[color]);
 
   return (
-    <AntdTypography className={classes} {...props}>
+    <AntdTypography className={`${classes} ${className}`} {...props}>
       {children}
     </AntdTypography>
   );
