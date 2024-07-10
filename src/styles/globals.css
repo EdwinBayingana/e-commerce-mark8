@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  background-color: #1c1c1e !important;
+}
+
+.transparent-background {
+  background-color: rgba(0, 0, 0, 0.266);
+}
+
+.auth__backgroundImage {
+  background-color: #fca311;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.tooltip {
+  border-radius: 0.35rem;
+  background: #3a3a3c;
+  padding: 1rem;
+  box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0);
+  text-align: center;
+}
+
+.ant-alert-description {
+  text-align: left;
+}
+
+/* Button */
+/* .btn-primary {
+  @apply bg-primary text-white border-primary hover:bg-primaryDark;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white border-secondary hover:bg-secondaryDark;
+}
+
+.btn-danger {
+  @apply bg-error text-white border-error hover:bg-errorDark;
+}
+
+.btn-small {
+  @apply px-2 py-1 text-sm;
+}
+
+.btn-medium {
+  @apply px-4 py-2 text-base;
+}
+
+.btn-large {
+  @apply px-6 py-3 text-lg;
+} */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+*::-webkit-scrollbar {
+  width: 0.3em;
+  height: 0.5em;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #434242;
+}
