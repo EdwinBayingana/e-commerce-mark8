@@ -12,7 +12,7 @@ const AppLayout: FC<Props> = ({ children }) => {
     <Layout>
       <Layout>
         <Fragment>
-          <Content className="bg-neutral-600">{children}</Content>
+          <Content>{children}</Content>
         </Fragment>
       </Layout>
     </Layout>

@@ -11,10 +11,11 @@ module.exports = {
     extend: {
       colors: {
         primary: '#C1CF16',
-        primaryDark: '#D4891B',
-        secondary: '#C1CF16',
-        secondaryDark: '#C1CF16',
+        primaryDark: '#C1CF16',
+        secondary: '#1C2834',
+        secondaryDark: '#1C2834',
         borderColor: '#DBDBDB',
+        textGray: '#79878F',
       },
       margin: {
         page: '20px',

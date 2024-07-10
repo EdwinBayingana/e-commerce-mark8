@@ -10,7 +10,7 @@
 
 html,
 body {
-  background-color: #1c1c1e !important;
+  background-color: #ffffff !important;
 }
 
 .transparent-background {
@@ -18,7 +18,7 @@ body {
 }
 
 .auth__backgroundImage {
-  background-color: #fca311;
+  background-color: #c1cf16;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
