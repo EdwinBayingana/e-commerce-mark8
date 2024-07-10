@@ -14,6 +14,7 @@ const config: Config = {
         secondary: '#1C1C1E',
         secondary_dark: '#1B1B1B',
         dark_primary: '000000',
+        primaryDark: '#D4891B',
         border_gray: '#434345',
         auth: '#505050',
         borderColor: 'rgba(255, 255, 255, 0.07)',
