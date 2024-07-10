@@ -12,6 +12,6 @@ const HomePage: any = () => {
   );
 };
 
-// LoginPage.getLayout = (page) => <AuthLayout>{page}</AuthLayout>;
+// HomePage.getLayout = (page) => <HomeLayout>{page}</HomeLayout>;
 
 export default HomePage;
