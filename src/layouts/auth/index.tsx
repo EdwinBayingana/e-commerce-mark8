@@ -17,7 +17,7 @@ const AuthLayout: FC<Props> = ({ children }) => {
       }}
     >
       <Fragment>
-        <Content className="flex items-center justify-center max-h-[50vh] w-[45%] shadow-lg bg-black">
+        <Content className="flex items-center justify-center max-h-[50vh]">
           {children}
         </Content>
       </Fragment>

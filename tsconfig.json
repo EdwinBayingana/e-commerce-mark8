@@ -31,7 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".eslintrc.ts",
-    "tailwind.config.js"
+    "tailwind.config.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -36,30 +36,32 @@ body {
   text-align: left;
 }
 
-/* Button */
-/* .btn-primary {
-  @apply bg-primary text-white border-primary hover:bg-primaryDark;
+/* Input */
+.custom-password-icon .ant-input-password-icon {
+  @apply text-secondary;
+  cursor: pointer;
 }
 
-.btn-secondary {
-  @apply bg-secondary text-white border-secondary hover:bg-secondaryDark;
+.custom-input-text .ant-input {
+  @apply text-secondary;
 }
 
-.btn-danger {
-  @apply bg-error text-white border-error hover:bg-errorDark;
+.custom-input-password-text .ant-input-password {
+  @apply text-secondary;
 }
 
-.btn-small {
-  @apply px-2 py-1 text-sm;
+/* Custom placeholder color for Ant Design inputs */
+.ant-input::placeholder {
+  color: #79878f !important;
 }
 
-.btn-medium {
-  @apply px-4 py-2 text-base;
+.ant-input-affix-wrapper input::placeholder {
+  color: #79878f !important;
 }
 
-.btn-large {
-  @apply px-6 py-3 text-lg;
-} */
+.ant-input-password input::placeholder {
+  color: #79878f !important;
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

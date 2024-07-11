@@ -1,22 +1,32 @@
-import { Button as AntdButton, ButtonProps } from 'antd';
-import { FC } from 'react';
+import { Button as AntdButton } from 'antd';
+import { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
-interface CustomButtonProps extends ButtonProps {
-  type?: 'primary' | 'link' | 'text' | 'default' | 'dashed' | undefined;
+interface CustomButtonProps {
+  type?:
+    | 'primary'
+    | 'secondary'
+    | 'link'
+    | 'text'
+    | 'default'
+    | 'dashed'
+    | undefined;
   size?: 'small' | 'large';
+  children?: ReactNode;
+  className?: string;
+  htmlType?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 const typeClasses: Record<string, string> = {
-  primary: 'bg-primary text-white border-primary hover:bg-primary-dark',
-  secondary: 'bg-secondary text-white border-secondary hover:bg-secondary-dark',
-  danger: 'bg-error text-white border-error hover:bg-error-dark',
+  primary: 'bg-primary text-secondary border-primary text-xs',
+  secondary:
+    'bg-primaryBackground text-secondary border-[1.5px] border-borderColor text-xs',
+  danger: 'bg-error border-error hover:bg-error-dark text-xs',
 };
 
 const sizeClasses: Record<string, string> = {
-  small: 'px-2 py-1 text-sm',
-  medium: 'px-4 py-2 text-base',
-  large: 'px-6 py-3 text-lg',
+  small: 'px-3 py-1',
+  large: 'px-7 py-5',
 };
 
 const Button: FC<CustomButtonProps> = ({
@@ -24,12 +34,17 @@ const Button: FC<CustomButtonProps> = ({
   size = 'large',
   children,
   className,
+  htmlType,
   ...props
 }) => {
   const classes = classNames(className, typeClasses[type], sizeClasses[size]);
 
   return (
-    <AntdButton className={classes} {...props}>
+    <AntdButton
+      className={`${classes} rounded-lg font-semibold`}
+      htmlType={htmlType}
+      {...props}
+    >
       {children}
     </AntdButton>
   );
