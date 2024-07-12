@@ -15,7 +15,7 @@ const ForgotPasswordContent: FC = () => {
       <Flex
         vertical
         justify="space-between"
-        className="min-h-[25vh] w-[24vw] p-10 gap-6"
+        className="min-h-[25vh] md:w-[24vw] p-10 gap-6"
       >
         <Typography variant="subTitle" className="text-secondary mb-0.5">
           Forgot Password

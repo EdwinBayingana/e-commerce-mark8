@@ -7,12 +7,12 @@ import SignupForm from "./signup/SignupForm";
 
 const CentralCardContent: FC = () => {
   const { isLoginPage } = useRedirection();
-  const cardInnerClassName = `${isLoginPage ? "w-[50%]" : "w-full"} p-7`;
+  const cardInnerClassName = `${isLoginPage ? "w-full md:w-[50%]" : "w-full"} p-5 md:p-7`;
 
   return (
     <Flex
       justify="space-between"
-      className={`${isLoginPage ? "h-[80vh] md:h-[40vh]" : "h-[50vh]"} md:w-[45vw]`}
+      className={`${isLoginPage ? "md:h-[40vh]" : "md:h-[50vh]"}`}
     >
       {isLoginPage && (
         <Flex
