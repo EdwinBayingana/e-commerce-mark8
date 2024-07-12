@@ -9,6 +9,11 @@ const routes = {
     url: '/signup',
     name: 'signup',
   },
+  forgotPassword: {
+    label: 'Forgot Password',
+    url: '/forgot-password',
+    name: 'forgot-password',
+  },
   home: {
     label: 'Home',
     url: '/',

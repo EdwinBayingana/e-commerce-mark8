@@ -5,14 +5,14 @@ import CompanyDetails from './login/CompanyDetails';
 import LoginForm from './login/LoginForm';
 import SignupForm from './signup/SignupForm';
 
-const CentralCardContentLogin: FC = () => {
+const CentralCardContent: FC = () => {
   const { isLoginPage } = useRedirection();
   const cardInnerClassName = `${isLoginPage ? 'w-[50%]' : 'w-full'}  p-7`;
 
   return (
     <Flex
       justify="space-between"
-      className={`${isLoginPage ? 'h-[40vh]' : 'h-[50vh]'}`}
+      className={`${isLoginPage ? 'h-[40vh] w-[45vw]' : 'h-[50vh] w-[45vw]'}`}
     >
       {isLoginPage && (
         <Flex
@@ -35,4 +35,4 @@ const CentralCardContentLogin: FC = () => {
   );
 };
 
-export default CentralCardContentLogin;
+export default CentralCardContent;

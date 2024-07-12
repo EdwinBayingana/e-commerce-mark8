@@ -7,7 +7,7 @@ import {
   BottomCardContentLeft,
   BottomCardContentRight,
 } from '@components/auth/BottomCardContent';
-import CentralCardContentLogin from '@components/auth/CentralCardContent';
+import CentralCardContent from '@components/auth/CentralCardContent';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
@@ -22,7 +22,7 @@ const Signup: NextPageWithLayout = () => {
       <AuthContent
         BottomCardContentLeft={BottomCardContentLeft}
         BottomCardContentRight={BottomCardContentRight}
-        CentralCardContent={CentralCardContentLogin}
+        CentralCardContent={CentralCardContent}
       />
     </Fragment>
   );

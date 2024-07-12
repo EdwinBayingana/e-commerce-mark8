@@ -1,6 +1,6 @@
 import { StyleProvider } from '@ant-design/cssinjs';
 import AntDNotificationWithRedux from '@components/antDNotificationWithRedux';
-// import NProgressContainer from '@components/progressBar';
+import NProgressContainer from '@components/progressBar';
 import antdTheme from '@utils/config/antTheme';
 import { App as AntApp, ConfigProvider } from 'antd';
 import type { NextPage } from 'next';
@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../store';
 import '../styles/globals.css';
-// import '../styles/nprogress.css';
+import '../styles/nprogress.css';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -41,7 +41,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                 <Toaster />
 
                 {/* <ClientErrorHandler> */}
-                {/* <NProgressContainer /> */}
+                <NProgressContainer />
                 <AntDNotificationWithRedux />
                 <Component {...pageProps} />
                 {/* </ClientErrorHandler> */}

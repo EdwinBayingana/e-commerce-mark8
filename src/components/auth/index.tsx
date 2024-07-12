@@ -2,8 +2,8 @@ import { Card, Flex } from 'antd';
 import React, { FC, Fragment } from 'react';
 
 interface IAuthContentProps {
-  BottomCardContentLeft: FC;
-  BottomCardContentRight: FC;
+  BottomCardContentLeft?: FC;
+  BottomCardContentRight?: FC;
   CentralCardContent: FC;
 }
 
@@ -12,7 +12,7 @@ const AuthContent: FC<IAuthContentProps> = ({
   BottomCardContentRight,
   CentralCardContent,
 }) => {
-  const cardOuterClassName = 'border-none bg-primaryBackground w-[45vw]';
+  const cardOuterClassName = 'border-none bg-primaryBackground';
   const outerCardStyles = { body: { padding: 0, overflow: 'hidden' } };
 
   return (
@@ -24,8 +24,8 @@ const AuthContent: FC<IAuthContentProps> = ({
 
         <Card className={cardOuterClassName} styles={outerCardStyles}>
           <Flex justify="space-between" className="h-[13vh] rounded-xl p-7">
-            <BottomCardContentLeft />
-            <BottomCardContentRight />
+            {BottomCardContentLeft && <BottomCardContentLeft />}
+            {BottomCardContentRight && <BottomCardContentRight />}
           </Flex>
         </Card>
       </Flex>
