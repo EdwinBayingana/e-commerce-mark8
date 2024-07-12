@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-module.exports = {
+import type { Config } from 'tailwindcss';
+const config: Config = {
   important: true,
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -11,10 +11,14 @@ module.exports = {
     extend: {
       colors: {
         primary: '#C1CF16',
-        primaryDark: '#D4891B',
-        secondary: '#C1CF16',
-        secondaryDark: '#C1CF16',
+        primaryDark: '#C1CF16',
+        secondary: '#1C2834',
+        secondaryDark: '#141C24',
         borderColor: '#DBDBDB',
+        primaryBackground: '#FFFFFF',
+        secondaryBackground: '#F4F5F6',
+        textGray: '#79878F',
+        textDarkGray: '#495D69',
       },
       margin: {
         page: '20px',
@@ -40,3 +44,5 @@ module.exports = {
   },
   plugins: [require('@tailwindcss/typography')],
 };
+
+export default config;

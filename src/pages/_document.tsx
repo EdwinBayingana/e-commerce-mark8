@@ -9,7 +9,7 @@ const MyDocument = () => {
         <meta name="Mark8" content="Buyer | Seller" />
         <meta name="description" content="Your go to for buy and selling!" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
         <meta property="og:type" content="website" />
       </Head>
       <body>

@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 interface CustomTypographyProps {
-  variant?: 'title' | 'body' | 'caption' | 'header';
+  variant?: 'header' | 'title' | 'subTitle' | 'body' | 'caption';
   color?: 'primary' | 'secondary' | 'error' | 'default';
   className?: string;
   children?: ReactNode;
@@ -12,12 +12,13 @@ interface CustomTypographyProps {
 const variantClasses: Record<string, string> = {
   header: 'text-4xl font-extrabold',
   title: 'text-2xl font-bold',
-  body: 'text-base',
-  caption: 'text-sm',
+  subTitle: 'text-xl font-bold',
+  body: 'text-xs',
+  caption: 'text-xs text-textGray',
 };
 
 const colorClasses: Record<string, string> = {
-  primary: 'text-primary',
+  primary: 'text-secondary',
   secondary: 'text-secondary',
   error: 'text-error',
   default: 'text-dark_primary',
@@ -33,7 +34,10 @@ const Typography: FC<CustomTypographyProps> = ({
   const classes = classNames(variantClasses[variant], colorClasses[color]);
 
   return (
-    <AntdTypography className={`${classes} ${className}`} {...props}>
+    <AntdTypography
+      className={`${classes} ${className} text-secondary`}
+      {...props}
+    >
       {children}
     </AntdTypography>
   );

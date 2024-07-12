@@ -1,26 +1,26 @@
 import Typography from '@components/shared/typography';
-import AppLayout from '@layouts/app';
 import Head from 'next/head';
 import { Fragment, ReactElement } from 'react';
 import { NextPage } from 'next';
+import AuthLayout from '@layouts/auth';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
 };
 
-const HomePage: NextPageWithLayout = () => {
+const Signup: NextPageWithLayout = () => {
   return (
     <Fragment>
       <Head>
-        <title>Home | Mark8</title>
+        <title>Signup | Mark8</title>
       </Head>
-      <Typography variant="title" className="text-green-500">
-        Home Bridge
+      <Typography variant="title" className="text-red-500">
+        Signup
       </Typography>
     </Fragment>
   );
 };
 
-HomePage.getLayout = (page: ReactElement) => <AppLayout>{page}</AppLayout>;
+Signup.getLayout = (page: ReactElement) => <AuthLayout>{page}</AuthLayout>;
 
-export default HomePage;
+export default Signup;

@@ -1,9 +1,26 @@
-import { Popover } from 'antd';
-import React from 'react';
+import { Popover, PopoverProps } from 'antd';
+import React, { ReactNode } from 'react';
 
-const PopoverModal = ({ content, trigger, title, ...props }: any) => {
-  const { children, className, close, rootClassName, closable } = props;
+interface PopoverModalProps extends PopoverProps {
+  content: ReactNode;
+  trigger: PopoverProps['trigger'];
+  title: ReactNode;
+  children: ReactNode;
+  className?: string;
+  rootClassName?: string;
+  close?: () => void;
+}
 
+const PopoverModal: React.FC<PopoverModalProps> = ({
+  content,
+  trigger,
+  title,
+  children,
+  className = '',
+  close,
+  rootClassName = '',
+  ...props
+}) => {
   return (
     <Popover
       content={content}
@@ -11,14 +28,11 @@ const PopoverModal = ({ content, trigger, title, ...props }: any) => {
       trigger={trigger}
       rootClassName={`rounded-lg ${rootClassName}`}
       className={`${className}`}
-      closable={closable}
-      color="#000000" // To make this dynamic
+      color="#FFFFFF"
       onOpenChange={(isOpen: boolean) => {
-        if (isOpen) {
-          return;
+        if (!isOpen && close) {
+          close();
         }
-
-        close && close();
       }}
       {...props}
     >
