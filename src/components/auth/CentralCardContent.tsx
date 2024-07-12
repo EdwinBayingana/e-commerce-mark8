@@ -1,3 +1,4 @@
+import useRedirection from '@utils/hooks/useRedirection';
 import { Flex } from 'antd';
 import React, { FC } from 'react';
 import CompanyDetails from './login/CompanyDetails';
@@ -5,24 +6,27 @@ import LoginForm from './login/LoginForm';
 import SignupForm from './signup/SignupForm';
 
 const CentralCardContentLogin: FC = () => {
-  const cardInnerClassName = 'w-[50%] p-7';
+  const { isLoginPage } = useRedirection();
+  const cardInnerClassName = `${isLoginPage ? 'w-[50%]' : 'w-full'}  p-7`;
 
   return (
     <Flex justify="space-between" className="h-[40vh]">
+      {isLoginPage && (
+        <Flex
+          vertical
+          justify="space-between"
+          className={`${cardInnerClassName} bg-secondaryBackground rounded-l-xl`}
+        >
+          <CompanyDetails />
+        </Flex>
+      )}
+
       <Flex
         vertical
         justify="space-between"
-        className={`${cardInnerClassName} bg-secondaryBackground rounded-l-xl`}
+        className={`bg-primaryBackground ${cardInnerClassName} ${isLoginPage ? 'rounded-r-xl' : 'rounded-l-xl'}`}
       >
-        <CompanyDetails />
-      </Flex>
-      <Flex
-        vertical
-        justify="space-between"
-        className={`${cardInnerClassName} bg-primaryBackground rounded-r-xl`}
-      >
-        {/* <LoginForm /> */}
-        <SignupForm />
+        {isLoginPage ? <LoginForm /> : <SignupForm />}
       </Flex>
     </Flex>
   );

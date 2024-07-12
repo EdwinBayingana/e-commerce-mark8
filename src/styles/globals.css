@@ -50,6 +50,9 @@ body {
   @apply text-secondary;
 }
 
+.custom-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: #1c2834; /* Change the tick color to black */
+}
 /* Custom placeholder color for Ant Design inputs */
 .ant-input::placeholder {
   color: #79878f !important;
