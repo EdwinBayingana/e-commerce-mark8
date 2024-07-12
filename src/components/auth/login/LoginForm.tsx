@@ -58,12 +58,14 @@ const LoginForm: React.FC = () => {
         </Flex>
 
         <Flex justify="space-between" align="center">
-          <Typography
-            variant="body"
-            className="underline font-bold cursor-pointer"
-          >
-            Forgot Password?
-          </Typography>
+          <button onClick={() => redirectTo(routes.forgotPassword.url)}>
+            <Typography
+              variant="body"
+              className="underline font-bold cursor-pointer"
+            >
+              Forgot Password?
+            </Typography>
+          </button>
 
           <Form.Item className="my-auto">
             <Button
