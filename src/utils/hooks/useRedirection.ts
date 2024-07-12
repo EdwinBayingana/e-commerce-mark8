@@ -1,5 +1,5 @@
-import routes from '@utils/routes';
-import { usePathname, useRouter } from 'next/navigation';
+import routes from "@utils/routes";
+import { usePathname, useRouter } from "next/navigation";
 
 interface RouterState {
   pathname: string;

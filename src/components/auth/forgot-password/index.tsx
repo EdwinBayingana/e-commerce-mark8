@@ -1,12 +1,12 @@
-import Button from '@components/shared/button';
-import Input from '@components/shared/input';
-import Typography from '@components/shared/typography';
-import useRedirection from '@utils/hooks/useRedirection';
-import routes from '@utils/routes';
-import { Flex, Form } from 'antd';
-import React, { FC } from 'react';
-import { CgMail } from 'react-icons/cg';
-import { IoMdCheckmark } from 'react-icons/io';
+import Button from "@components/shared/button";
+import Input from "@components/shared/input";
+import Typography from "@components/shared/typography";
+import useRedirection from "@utils/hooks/useRedirection";
+import routes from "@utils/routes";
+import { Flex, Form } from "antd";
+import React, { FC } from "react";
+import { CgMail } from "react-icons/cg";
+import { IoMdCheckmark } from "react-icons/io";
 
 const ForgotPasswordContent: FC = () => {
   const { redirectTo } = useRedirection();
@@ -22,7 +22,7 @@ const ForgotPasswordContent: FC = () => {
         </Typography>
         <Form.Item
           name="email"
-          rules={[{ message: 'Please input the Email!' }]}
+          rules={[{ message: "Please input the Email!" }]}
           className="my-auto"
         >
           <Typography

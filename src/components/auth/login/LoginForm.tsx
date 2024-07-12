@@ -1,17 +1,17 @@
-import React from 'react';
-import { Flex, Form } from 'antd';
-import Input from '@components/shared/input';
-import Button from '@components/shared/button';
-import { BiLogInCircle } from 'react-icons/bi';
-import { CgMail } from 'react-icons/cg';
-import { HiOutlineLockClosed } from 'react-icons/hi';
-import Typography from '@components/shared/typography';
-import routes from '@utils/routes';
-import useRedirection from '@utils/hooks/useRedirection';
+import React from "react";
+import { Flex, Form } from "antd";
+import Input from "@components/shared/input";
+import Button from "@components/shared/button";
+import { BiLogInCircle } from "react-icons/bi";
+import { CgMail } from "react-icons/cg";
+import { HiOutlineLockClosed } from "react-icons/hi";
+import Typography from "@components/shared/typography";
+import routes from "@utils/routes";
+import useRedirection from "@utils/hooks/useRedirection";
 
 const LoginForm: React.FC = () => {
   const { redirectTo } = useRedirection();
-  const formLabelClassName = 'text-[9.5px] text-secondary mb-0.5 font-semibold';
+  const formLabelClassName = "text-[9.5px] text-secondary mb-0.5 font-semibold";
   const inputIconSize = 17;
 
   return (
@@ -22,7 +22,7 @@ const LoginForm: React.FC = () => {
         <Flex vertical className="gap-4">
           <Form.Item
             name="email"
-            rules={[{ message: 'Please input the Email!' }]}
+            rules={[{ message: "Please input the Email!" }]}
             className="my-auto"
           >
             <Typography variant="body" className={formLabelClassName}>
@@ -37,7 +37,7 @@ const LoginForm: React.FC = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ message: 'Please input the Password!' }]}
+            rules={[{ message: "Please input the Password!" }]}
             className="my-auto"
           >
             <Typography variant="body" className={formLabelClassName}>

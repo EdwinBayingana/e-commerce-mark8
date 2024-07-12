@@ -1,9 +1,9 @@
-import { Popover, PopoverProps } from 'antd';
-import React, { ReactNode } from 'react';
+import { Popover, PopoverProps } from "antd";
+import React, { ReactNode } from "react";
 
 interface PopoverModalProps extends PopoverProps {
   content: ReactNode;
-  trigger: PopoverProps['trigger'];
+  trigger: PopoverProps["trigger"];
   title: ReactNode;
   children: ReactNode;
   className?: string;
@@ -16,9 +16,9 @@ const PopoverModal: React.FC<PopoverModalProps> = ({
   trigger,
   title,
   children,
-  className = '',
+  className = "",
   close,
-  rootClassName = '',
+  rootClassName = "",
   ...props
 }) => {
   return (

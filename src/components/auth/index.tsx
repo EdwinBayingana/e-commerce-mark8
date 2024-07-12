@@ -1,5 +1,5 @@
-import { Card, Flex } from 'antd';
-import React, { FC, Fragment } from 'react';
+import { Card, Flex } from "antd";
+import React, { FC, Fragment } from "react";
 
 interface IAuthContentProps {
   BottomCardContentLeft?: FC;
@@ -12,8 +12,8 @@ const AuthContent: FC<IAuthContentProps> = ({
   BottomCardContentRight,
   CentralCardContent,
 }) => {
-  const cardOuterClassName = 'border-none bg-primaryBackground';
-  const outerCardStyles = { body: { padding: 0, overflow: 'hidden' } };
+  const cardOuterClassName = "border-none bg-primaryBackground";
+  const outerCardStyles = { body: { padding: 0, overflow: "hidden" } };
 
   return (
     <Fragment>

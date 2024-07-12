@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import { Fragment, ReactElement } from 'react';
-import { NextPage } from 'next';
-import AuthLayout from '@layouts/auth';
-import AuthContent from '@components/auth';
-import ForgotPasswordContent from '@components/auth/forgot-password';
+import Head from "next/head";
+import { Fragment, ReactElement } from "react";
+import { NextPage } from "next";
+import AuthLayout from "@layouts/auth";
+import AuthContent from "@components/auth";
+import ForgotPasswordContent from "@components/auth/forgot-password";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
