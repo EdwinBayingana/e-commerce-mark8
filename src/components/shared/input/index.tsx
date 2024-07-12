@@ -1,45 +1,45 @@
-import { FC, useState } from 'react';
-import { Input as AntdInput, InputProps as AntdInputProps } from 'antd';
-import classNames from 'classnames';
-import { LuEye, LuEyeOff } from 'react-icons/lu';
+import { FC, useState } from "react";
+import { Input as AntdInput, InputProps as AntdInputProps } from "antd";
+import classNames from "classnames";
+import { LuEye, LuEyeOff } from "react-icons/lu";
 
 interface CustomInputProps extends AntdInputProps {
-  type?: 'primary' | 'secondary' | 'error';
-  size?: 'small' | 'large';
-  inputType?: 'text' | 'search' | 'password';
+  type?: "primary" | "secondary" | "error";
+  size?: "small" | "large";
+  inputType?: "text" | "search" | "password";
   addonBefore?: React.ReactElement;
   addonAfter?: React.ReactElement;
-  variant?: 'borderless' | 'outlined' | 'filled' | undefined;
+  variant?: "borderless" | "outlined" | "filled" | undefined;
   placeholder?: string;
 }
 
 const typeClasses: Record<string, string> = {
-  primary: 'border-none focus:border-none focus:ring-primary text-secondary',
+  primary: "border-none focus:border-none focus:ring-primary text-secondary",
   secondary:
-    'border-primary focus:border-secondary focus:ring-secondary text-secondary',
-  error: 'border-error focus:border-error focus:ring-error',
+    "border-primary focus:border-secondary focus:ring-secondary text-secondary",
+  error: "border-error focus:border-error focus:ring-error",
 };
 
 const sizeClasses: Record<string, string> = {
-  small: 'px-4 py-3 text-xs',
-  large: 'px-6 py-3 text-lg',
+  small: "px-4 py-3 text-xs",
+  large: "px-6 py-3 text-lg",
 };
 
 const Input: FC<CustomInputProps> = ({
-  type = 'primary',
-  size = 'small',
-  inputType = 'text',
+  type = "primary",
+  size = "small",
+  inputType = "text",
   className,
   addonBefore,
   addonAfter,
-  variant = 'borderless',
+  variant = "borderless",
   placeholder,
   ...props
 }) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   const classes = classNames(
-    'rounded-lg bg-secondaryBackground custom-input-text custom-placeholder-color',
+    "rounded-lg bg-secondaryBackground custom-input-text custom-placeholder-color",
     typeClasses[type],
     sizeClasses[size],
     className,
@@ -49,7 +49,7 @@ const Input: FC<CustomInputProps> = ({
   ) : null;
 
   switch (inputType) {
-    case 'search':
+    case "search":
       return (
         <AntdInput.Search
           className={classes}
@@ -60,7 +60,7 @@ const Input: FC<CustomInputProps> = ({
           {...props}
         />
       );
-    case 'password':
+    case "password":
       return (
         <AntdInput.Password
           className={`${classes} custom-password-icon custom-input-pasword-text`}

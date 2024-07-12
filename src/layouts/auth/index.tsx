@@ -1,6 +1,6 @@
-import { AuthBackgroundImage } from '@utils/images';
-import { Layout } from 'antd';
-import React, { FC, Fragment } from 'react';
+import { AuthBackgroundImage } from "@utils/images";
+import { Layout } from "antd";
+import React, { FC, Fragment } from "react";
 
 const { Content } = Layout;
 

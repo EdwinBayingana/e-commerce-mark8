@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import { PiX } from 'react-icons/pi';
-import Typography from '../typography';
+import React, { FC } from "react";
+import { PiX } from "react-icons/pi";
+import Typography from "../typography";
 
 interface Props {
-  variant: 'half' | 'full';
+  variant: "half" | "full";
   children: React.ReactNode;
   title?: string;
   onCancel: () => void;
@@ -14,7 +14,7 @@ const PopupModal: FC<Props> = ({ title, onCancel, className, ...props }) => {
   const { children, variant } = props;
 
   switch (variant) {
-    case 'half':
+    case "half":
       return (
         <div className={className} {...props}>
           <div className="rounded-xl">
@@ -30,7 +30,7 @@ const PopupModal: FC<Props> = ({ title, onCancel, className, ...props }) => {
         </div>
       );
 
-    case 'full':
+    case "full":
       return <div {...props}>{children}</div>;
 
     default:

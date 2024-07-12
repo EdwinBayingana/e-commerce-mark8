@@ -1,16 +1,16 @@
-import { theme, ThemeConfig } from 'antd';
+import { theme, ThemeConfig } from "antd";
 
 const antdTheme: ThemeConfig = {
   algorithm: [theme.darkAlgorithm],
   token: {
-    colorPrimary: '#C1CF16',
-    colorLink: '#C1CF16',
-    colorInfo: '#C1CF1650',
+    colorPrimary: "#C1CF16",
+    colorLink: "#C1CF16",
+    colorInfo: "#C1CF1650",
     borderRadius: 11,
   },
   components: {
     Menu: {
-      darkItemSelectedBg: '#464A34',
+      darkItemSelectedBg: "#464A34",
     },
     Input: {
       controlHeightLG: 45,
@@ -30,7 +30,7 @@ const antdTheme: ThemeConfig = {
       controlHeightSM: 24,
     },
     Calendar: {
-      fullPanelBg: 'inherit',
+      fullPanelBg: "inherit",
     },
   },
 };

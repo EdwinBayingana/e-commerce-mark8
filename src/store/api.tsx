@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_API_URL } from '@utils/config/envs';
-import { RootState } from './index';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { BASE_API_URL } from "@utils/config/envs";
+import { RootState } from "./index";
 
 export const baseAPI = createApi({
   baseQuery: fetchBaseQuery({
@@ -10,10 +10,10 @@ export const baseAPI = createApi({
         appReducer: { token },
       } = getState() as RootState;
 
-      if (token) headers.set('authorization', `Bearer ${token}`);
+      if (token) headers.set("authorization", `Bearer ${token}`);
       return headers;
     },
   }),
-  tagTypes: ['Products'],
+  tagTypes: ["Products"],
   endpoints: () => ({}),
 });

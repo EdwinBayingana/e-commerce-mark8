@@ -1,7 +1,7 @@
-import { PrimaryLogo } from '@components/logo';
-import Typography from '@components/shared/typography';
-import { Flex } from 'antd';
-import React, { FC } from 'react';
+import { PrimaryLogo } from "@components/logo";
+import Typography from "@components/shared/typography";
+import { Flex } from "antd";
+import React, { FC } from "react";
 
 const CompanyDetails: FC = () => {
   return (

@@ -1,7 +1,7 @@
-import { PrimaryLogo as PrimaryLogoAsset } from '@utils/images';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { FC } from 'react';
+import { PrimaryLogo as PrimaryLogoAsset } from "@utils/images";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { FC } from "react";
 
 interface LogoProps {
   clickable?: boolean;
@@ -18,9 +18,9 @@ export const PrimaryLogo: FC<LogoProps> = ({ clickable, className }) => {
         alt="Mark8 company logo"
         fill
         onClick={() => {
-          clickable && router.push('/');
+          clickable && router.push("/");
         }}
-        className={`object-contain rounded-md ${clickable && 'cursor-pointer'}`}
+        className={`object-contain rounded-md ${clickable && "cursor-pointer"}`}
       />
     </div>
   );

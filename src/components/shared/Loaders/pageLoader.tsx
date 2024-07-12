@@ -1,5 +1,5 @@
-import { PrimaryLogo } from '@components/logo';
-import { RotatingLines } from 'react-loader-spinner';
+import { PrimaryLogo } from "@components/logo";
+import { RotatingLines } from "react-loader-spinner";
 
 interface Props {
   isIcon?: boolean;

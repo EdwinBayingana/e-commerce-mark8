@@ -1,5 +1,5 @@
-import { Layout } from 'antd';
-import React, { FC, Fragment } from 'react';
+import { Layout } from "antd";
+import React, { FC, Fragment } from "react";
 
 const { Content } = Layout;
 
