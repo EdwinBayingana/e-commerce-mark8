@@ -6,17 +6,14 @@ import { BiLogInCircle } from 'react-icons/bi';
 import { CgMail } from 'react-icons/cg';
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import Typography from '@components/shared/typography';
-import routes from '@utils/routes';
-import useRedirection from '@utils/hooks/useRedirection';
 
-const LoginForm: React.FC = () => {
-  const { redirectTo } = useRedirection();
+const SignupForm: React.FC = () => {
   const formLabelClassName = 'text-[9.5px] text-secondary mb-1';
 
   return (
     <Form layout="vertical" className="h-full">
       <Flex vertical justify="space-between" className="h-full">
-        <Typography variant="subTitle">Login</Typography>
+        <Typography variant="subTitle">Register</Typography>
 
         <Flex vertical className="gap-4">
           <Form.Item
@@ -60,12 +57,8 @@ const LoginForm: React.FC = () => {
           </Typography>
 
           <Form.Item className="my-auto">
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={() => redirectTo(routes.home.url)}
-            >
-              Login
+            <Button type="primary" htmlType="submit">
+              Register
               <BiLogInCircle className="text-secondary" size={15} />
             </Button>
           </Form.Item>
@@ -75,4 +68,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
