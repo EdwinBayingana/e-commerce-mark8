@@ -23,9 +23,11 @@ const SignupForm: React.FC = () => {
   return (
     <Form layout="vertical" className="h-full">
       <Flex vertical justify="space-between" className="h-full w-full">
-        <Typography variant="subTitle">Register</Typography>
+        <Typography variant="subTitle" className="mb-2 md:mb-0">
+          Register
+        </Typography>
 
-        <Flex className="gap-4">
+        <Flex className="gap-4 flex-col md:flex-row">
           <Flex vertical className="w-full gap-3">
             <Form.Item
               name="firstName"
@@ -144,7 +146,7 @@ const SignupForm: React.FC = () => {
           </Flex>
         </Flex>
 
-        <Flex justify="space-between" align="center">
+        <Flex className="flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0 mt-3 md:mt-0">
           <ConfigProvider
             theme={{
               token: {
@@ -165,7 +167,7 @@ const SignupForm: React.FC = () => {
           </ConfigProvider>
 
           <Form.Item className="my-auto">
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" className="w-full">
               Register
               <BiLogInCircle className="text-secondary" size={15} />
             </Button>

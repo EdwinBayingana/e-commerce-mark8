@@ -16,8 +16,10 @@ const LoginForm: React.FC = () => {
 
   return (
     <Form layout="vertical" className="h-full">
-      <Flex vertical justify="space-between" className="h-full">
-        <Typography variant="subTitle">Login</Typography>
+      <Flex vertical justify="space-between" className="h-full gap-4">
+        <Typography variant="subTitle" className="self-center md:self-auto">
+          Login
+        </Typography>
 
         <Flex vertical className="gap-4">
           <Form.Item
@@ -57,8 +59,32 @@ const LoginForm: React.FC = () => {
           </Form.Item>
         </Flex>
 
-        <Flex justify="space-between" align="center">
+        <Flex className="flex-col md:flex-row md:items-center md:justify-between">
           <button onClick={() => redirectTo(routes.forgotPassword.url)}>
+            <Typography
+              variant="body"
+              className="hidden md:inline underline font-bold cursor-pointer"
+            >
+              Forgot Password?
+            </Typography>
+          </button>
+
+          <Form.Item className="md:my-auto flex-end">
+            <Button
+              type="primary"
+              htmlType="submit"
+              onClick={() => redirectTo(routes.home.url)}
+              className="w-full"
+            >
+              Login
+              <BiLogInCircle className="text-secondary" size={15} />
+            </Button>
+          </Form.Item>
+
+          <button
+            onClick={() => redirectTo(routes.forgotPassword.url)}
+            className="flex self-center md:hidden"
+          >
             <Typography
               variant="body"
               className="underline font-bold cursor-pointer"
@@ -66,17 +92,6 @@ const LoginForm: React.FC = () => {
               Forgot Password?
             </Typography>
           </button>
-
-          <Form.Item className="my-auto">
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={() => redirectTo(routes.home.url)}
-            >
-              Login
-              <BiLogInCircle className="text-secondary" size={15} />
-            </Button>
-          </Form.Item>
         </Flex>
       </Flex>
     </Form>
