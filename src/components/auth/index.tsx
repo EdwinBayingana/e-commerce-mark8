@@ -1,3 +1,4 @@
+import useRedirection from "@utils/hooks/useRedirection";
 import { Card, Flex } from "antd";
 import React, { FC, Fragment } from "react";
 
@@ -12,8 +13,12 @@ const AuthContent: FC<IAuthContentProps> = ({
   BottomCardContentRight,
   CentralCardContent,
 }) => {
-  const cardOuterClassName =
-    "border-none bg-primaryBackground iphoneSE:w-[90vw] xxs:w-[90vw] pro:w-[60vw] md:w-[80vw] lg:w-[60vw] xl:w-[50vw]";
+  const { isLoginPage, isSignupPage } = useRedirection();
+  const loginAndSignupMobileStyles =
+    "md:w-[80vw] lg:w-[60vw] xl:w-[50vw] 2xl:w-[40vw]";
+  const forgotPasswordMobileStyles = "md:w-[40vw] xl:w-[30vw] 2xl:w-[25vw]";
+
+  const cardOuterClassName = `border-none bg-primaryBackground iphoneSE:w-[90vw] xxs:w-[90vw] pro:w-[60vw] ${isLoginPage || isSignupPage ? loginAndSignupMobileStyles : forgotPasswordMobileStyles}`;
   const outerCardStyles = { body: { padding: 0, overflow: "hidden" } };
 
   return (
@@ -21,7 +26,7 @@ const AuthContent: FC<IAuthContentProps> = ({
       <Flex
         vertical
         justify="space-between"
-        className="gap-4 overflow-y-auto md:overflow-hiddenmy-4 md:my-0"
+        className="gap-4 overflow-y-auto md:overflow-hidden my-4 md:my-0"
       >
         <Card className={cardOuterClassName} styles={outerCardStyles}>
           <CentralCardContent />
