@@ -17,13 +17,20 @@ const AuthContent: FC<IAuthContentProps> = ({
 
   return (
     <Fragment>
-      <Flex vertical justify="space-between" className="gap-4">
+      <Flex
+        vertical
+        justify="space-between"
+        className="gap-4 overflow-y-auto md:overflow-hidden my-4 md:my-0"
+      >
         <Card className={cardOuterClassName} styles={outerCardStyles}>
           <CentralCardContent />
         </Card>
 
         <Card className={cardOuterClassName} styles={outerCardStyles}>
-          <Flex justify="space-between" className="h-[13vh] rounded-xl p-7">
+          <Flex
+            justify="space-between"
+            className="flex-col md:flex-row md:h-[13vh] gap-2 md:gap-0 p-3 md:p-7 rounded-xl"
+          >
             {BottomCardContentLeft && <BottomCardContentLeft />}
             {BottomCardContentRight && <BottomCardContentRight />}
           </Flex>

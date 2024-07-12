@@ -12,7 +12,7 @@ export const BottomCardContentLeft = () => {
   const lowerText = isLoginPage ? "Create an account" : "Go to Login";
 
   return (
-    <Flex vertical justify="space-around" className="">
+    <Flex vertical justify="space-around">
       <Typography variant="body" className="font-bold">
         {topText}
       </Typography>

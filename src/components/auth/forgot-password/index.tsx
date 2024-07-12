@@ -43,7 +43,7 @@ const ForgotPasswordContent: FC = () => {
               variant="body"
               className="underline cursor-pointer font-bold"
             >
-              Login instead
+              Login Instead
             </Typography>
           </button>
 
