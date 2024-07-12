@@ -1,8 +1,13 @@
-import Typography from '@components/shared/typography';
 import Head from 'next/head';
 import { Fragment, ReactElement } from 'react';
 import { NextPage } from 'next';
 import AuthLayout from '@layouts/auth';
+import AuthContent from '@components/auth';
+import {
+  BottomCardContentLeft,
+  BottomCardContentRight,
+} from '@components/auth/BottomCardContent';
+import CentralCardContentLogin from '@components/auth/CentralCardContent';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
@@ -14,9 +19,11 @@ const Signup: NextPageWithLayout = () => {
       <Head>
         <title>Signup | Mark8</title>
       </Head>
-      <Typography variant="title" className="text-red-500">
-        Signup
-      </Typography>
+      <AuthContent
+        BottomCardContentLeft={BottomCardContentLeft}
+        BottomCardContentRight={BottomCardContentRight}
+        CentralCardContent={CentralCardContentLogin}
+      />
     </Fragment>
   );
 };

@@ -3,6 +3,11 @@ import { Fragment, ReactElement } from 'react';
 import { NextPage } from 'next';
 import AuthLayout from '@layouts/auth';
 import AuthContent from '@components/auth';
+import {
+  BottomCardContentLeft,
+  BottomCardContentRight,
+} from '@components/auth/BottomCardContent';
+import CentralCardContentLogin from '@components/auth/CentralCardContent';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
@@ -14,7 +19,11 @@ const Login: NextPageWithLayout = () => {
       <Head>
         <title>Login | Mark8</title>
       </Head>
-      <AuthContent />
+      <AuthContent
+        BottomCardContentLeft={BottomCardContentLeft}
+        BottomCardContentRight={BottomCardContentRight}
+        CentralCardContent={CentralCardContentLogin}
+      />
     </Fragment>
   );
 };

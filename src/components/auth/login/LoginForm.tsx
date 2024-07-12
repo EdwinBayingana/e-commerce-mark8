@@ -6,9 +6,13 @@ import { BiLogInCircle } from 'react-icons/bi';
 import { CgMail } from 'react-icons/cg';
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import Typography from '@components/shared/typography';
+import routes from '@utils/routes';
+import useRedirection from '@utils/hooks/useRedirection';
 
 const LoginForm: React.FC = () => {
-  const formLabelClassName = 'text-[9.5px] text-secondary mb-1';
+  const { redirectTo } = useRedirection();
+  const formLabelClassName = 'text-[9.5px] text-secondary mb-0.5 font-semibold';
+  const inputIconSize = 17;
 
   return (
     <Form layout="vertical" className="h-full">
@@ -25,7 +29,9 @@ const LoginForm: React.FC = () => {
               Email
             </Typography>
             <Input
-              addonBefore={<CgMail className="text-primary" size={15} />}
+              addonBefore={
+                <CgMail className="text-primary" size={inputIconSize} />
+              }
               placeholder="Enter email"
             />
           </Form.Item>
@@ -41,7 +47,10 @@ const LoginForm: React.FC = () => {
               type="primary"
               inputType="password"
               addonBefore={
-                <HiOutlineLockClosed className="text-primary" size={15} />
+                <HiOutlineLockClosed
+                  className="text-primary"
+                  size={inputIconSize}
+                />
               }
               placeholder="Enter password"
             />
@@ -57,7 +66,11 @@ const LoginForm: React.FC = () => {
           </Typography>
 
           <Form.Item className="my-auto">
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              onClick={() => redirectTo(routes.home.url)}
+            >
               Login
               <BiLogInCircle className="text-secondary" size={15} />
             </Button>

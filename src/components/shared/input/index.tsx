@@ -21,14 +21,13 @@ const typeClasses: Record<string, string> = {
 };
 
 const sizeClasses: Record<string, string> = {
-  small: 'px-2 py-1 text-sm',
-  medium: 'px-4 py-2 text-base',
+  small: 'px-4 py-3 text-xs',
   large: 'px-6 py-3 text-lg',
 };
 
 const Input: FC<CustomInputProps> = ({
   type = 'primary',
-  size = 'medium',
+  size = 'small',
   inputType = 'text',
   className,
   addonBefore,
@@ -40,7 +39,7 @@ const Input: FC<CustomInputProps> = ({
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   const classes = classNames(
-    'rounded-lg bg-secondaryBackground text-sm custom-input-text custom-placeholder-color',
+    'rounded-lg bg-secondaryBackground custom-input-text custom-placeholder-color',
     typeClasses[type],
     sizeClasses[size],
     className,

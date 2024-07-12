@@ -15,6 +15,7 @@ interface CustomButtonProps {
   children?: ReactNode;
   className?: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const typeClasses: Record<string, string> = {
@@ -35,6 +36,7 @@ const Button: FC<CustomButtonProps> = ({
   children,
   className,
   htmlType,
+  onClick,
   ...props
 }) => {
   const classes = classNames(className, typeClasses[type], sizeClasses[size]);
@@ -43,6 +45,7 @@ const Button: FC<CustomButtonProps> = ({
     <AntdButton
       className={`${classes} rounded-lg font-semibold`}
       htmlType={htmlType}
+      onClick={onClick}
       {...props}
     >
       {children}
