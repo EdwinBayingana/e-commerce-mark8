@@ -10,7 +10,10 @@ const CentralCardContentLogin: FC = () => {
   const cardInnerClassName = `${isLoginPage ? 'w-[50%]' : 'w-full'}  p-7`;
 
   return (
-    <Flex justify="space-between" className="h-[40vh]">
+    <Flex
+      justify="space-between"
+      className={`${isLoginPage ? 'h-[40vh]' : 'h-[50vh]'}`}
+    >
       {isLoginPage && (
         <Flex
           vertical
@@ -24,7 +27,7 @@ const CentralCardContentLogin: FC = () => {
       <Flex
         vertical
         justify="space-between"
-        className={`bg-primaryBackground ${cardInnerClassName} ${isLoginPage ? 'rounded-r-xl' : 'rounded-l-xl'}`}
+        className={`bg-primaryBackground ${cardInnerClassName} ${isLoginPage ? 'rounded-r-xl' : 'rounded-xl'}`}
       >
         {isLoginPage ? <LoginForm /> : <SignupForm />}
       </Flex>

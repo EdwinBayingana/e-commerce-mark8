@@ -5,11 +5,15 @@ import Button from '@components/shared/button';
 import { BiLogInCircle } from 'react-icons/bi';
 import { CgMail } from 'react-icons/cg';
 import { HiOutlineLockClosed } from 'react-icons/hi';
+import { HiOutlineUser } from 'react-icons/hi2';
+import { MdOutlinePhone } from 'react-icons/md';
 import Typography from '@components/shared/typography';
 import type { CheckboxProps } from 'antd';
 
 const SignupForm: React.FC = () => {
-  const formLabelClassName = 'text-[9.5px] text-secondary mb-1';
+  const formLabelClassName = 'text-[9.5px] text-secondary mb-0.5 font-semibold';
+  const inputIconSize = 17;
+
   const [isCheckBoxChecked, setIsCheckBoxChecked] = useState<boolean>(false);
 
   const onChange: CheckboxProps['onChange'] = (e) => {
@@ -22,7 +26,25 @@ const SignupForm: React.FC = () => {
         <Typography variant="subTitle">Register</Typography>
 
         <Flex className="gap-4">
-          <Flex vertical className="w-full gap-4">
+          <Flex vertical className="w-full gap-3">
+            <Form.Item
+              name="firstName"
+              rules={[{ message: 'Please input the First Name!' }]}
+              className="my-auto"
+            >
+              <Typography variant="body" className={formLabelClassName}>
+                First Name
+              </Typography>
+              <Input
+                addonBefore={
+                  <HiOutlineUser
+                    className="text-primary"
+                    size={inputIconSize}
+                  />
+                }
+                placeholder="Enter First Name"
+              />
+            </Form.Item>
             <Form.Item
               name="email"
               rules={[{ message: 'Please input the Email!' }]}
@@ -32,7 +54,9 @@ const SignupForm: React.FC = () => {
                 Email
               </Typography>
               <Input
-                addonBefore={<CgMail className="text-primary" size={15} />}
+                addonBefore={
+                  <CgMail className="text-primary" size={inputIconSize} />
+                }
                 placeholder="Enter email"
               />
             </Form.Item>
@@ -48,40 +72,71 @@ const SignupForm: React.FC = () => {
                 type="primary"
                 inputType="password"
                 addonBefore={
-                  <HiOutlineLockClosed className="text-primary" size={15} />
+                  <HiOutlineLockClosed
+                    className="text-primary"
+                    size={inputIconSize}
+                  />
                 }
                 placeholder="Enter password"
               />
             </Form.Item>
           </Flex>
 
-          <Flex vertical className="w-full gap-4 ">
+          {/* Right side */}
+
+          <Flex vertical className="w-full gap-3">
             <Form.Item
-              name="email"
-              rules={[{ message: 'Please input the Email!' }]}
+              name="lastName"
+              rules={[{ message: 'Please input the Last Name!' }]}
               className="my-auto"
             >
               <Typography variant="body" className={formLabelClassName}>
-                Email
+                Last Name
               </Typography>
               <Input
-                addonBefore={<CgMail className="text-primary" size={15} />}
-                placeholder="Enter email"
+                addonBefore={
+                  <HiOutlineUser
+                    className="text-primary"
+                    size={inputIconSize}
+                  />
+                }
+                placeholder="Enter Last Name"
               />
             </Form.Item>
             <Form.Item
-              name="password"
+              name="phoneNumber"
+              rules={[{ message: 'Please input the Phone Number!' }]}
+              className="my-auto"
+            >
+              <Typography variant="body" className={formLabelClassName}>
+                Phone Number
+              </Typography>
+              <Input
+                addonBefore={
+                  <MdOutlinePhone
+                    className="text-primary"
+                    size={inputIconSize}
+                  />
+                }
+                placeholder="--- --- ---"
+              />
+            </Form.Item>
+            <Form.Item
+              name="confirmPassword"
               rules={[{ message: 'Please input the Password!' }]}
               className="my-auto"
             >
               <Typography variant="body" className={formLabelClassName}>
-                Password
+                Confirm Password
               </Typography>
               <Input
                 type="primary"
                 inputType="password"
                 addonBefore={
-                  <HiOutlineLockClosed className="text-primary" size={15} />
+                  <HiOutlineLockClosed
+                    className="text-primary"
+                    size={inputIconSize}
+                  />
                 }
                 placeholder="Enter password"
               />
@@ -93,10 +148,8 @@ const SignupForm: React.FC = () => {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: '#c1cf16',
                 colorBgContainer: '#FFFFFF',
-                colorIconHover: '#c1cf16',
-                colorBorder: isCheckBoxChecked ? '#c1cf16' : '#79878F',
+                colorBorder: isCheckBoxChecked ? '#c1cf16' : '#242e3970',
                 borderRadius: 5,
               },
             }}
