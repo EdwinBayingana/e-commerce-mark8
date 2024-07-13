@@ -14,8 +14,11 @@ const HomePage: NextPageWithLayout = () => {
       <Head>
         <title>Home | Mark8</title>
       </Head>
-      <Typography variant="title" className="text-green-500">
-        Home Bridge
+      <Typography
+        variant="title"
+        className="flex items-center justify-center h-screen border text-green-500"
+      >
+        Home
       </Typography>
     </Fragment>
   );
