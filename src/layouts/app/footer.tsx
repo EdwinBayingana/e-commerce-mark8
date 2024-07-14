@@ -13,9 +13,7 @@ const FooterComponent: React.FC = () => {
   return (
     <Footer className="text-center" style={{ backgroundColor: "#F4F5F6" }}>
       <Flex justify="space-between">
-        <Flex gap={9}>
-          <PrimaryLogoWithLabel isHeaderLogo={true} />
-        </Flex>
+        <PrimaryLogoWithLabel />
 
         <Flex gap={9} align="center">
           <Typography variant="body" className="font-semibold">
@@ -23,6 +21,7 @@ const FooterComponent: React.FC = () => {
           </Typography>
           <Typography variant="caption">By Awesomity Ltd</Typography>
         </Flex>
+
         <Flex justify="space-between" gap={10} align="center">
           {footerSocials?.map((Icon, index) => (
             <Icon key={index} size={17} className="text-secondary" />

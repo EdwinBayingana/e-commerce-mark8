@@ -1,7 +1,7 @@
 import Typography from "@components/shared/typography";
 import { PrimaryLogo as PrimaryLogoAsset } from "@utils/images";
 import routes from "@utils/routes";
-import { Flex } from "antd";
+import { Flex, Typography as AntdTypography } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
@@ -46,7 +46,7 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
         clickable && router.push(routes.home.url);
       }}
     >
-      <div className={`relative w-9 h-9 ${className}`}>
+      <div className={`relative w-9 h-9 my-auto ${className}`}>
         <Image
           src={PrimaryLogoAsset}
           alt="Mark8 company logo"
@@ -60,13 +60,13 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
         align="center"
         className={`${!isHeaderLogo && "justify-center"} my-auto`}
       >
-        <Typography variant="body" className="self-start text-[15px] font-bold">
+        <AntdTypography className="self-start text-[13px] text-secondary font-bold">
           Mark8
-        </Typography>
+        </AntdTypography>
         {isHeaderLogo && (
-          <Typography variant="caption" className="self-start text-[8px]">
-            By Awesomity
-          </Typography>
+          <AntdTypography className="self-start text-textGray text-[10px]">
+            By Awesomity Lab
+          </AntdTypography>
         )}
       </Flex>
     </Flex>
