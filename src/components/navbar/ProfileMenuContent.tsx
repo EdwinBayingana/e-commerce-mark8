@@ -8,8 +8,12 @@ import { IoMdLogOut } from "react-icons/io";
 import IconWithLabel from "./IconWithLabel";
 import { PrimaryLogoWithLabel } from "@components/logo";
 import { AuthBackgroundImage } from "@utils/images";
+import useRedirection from "@utils/hooks/useRedirection";
+import routes from "@utils/routes";
 
 const ProfileMenuContent: React.FC = () => {
+  const { redirectTo } = useRedirection();
+
   const icons = [
     { label: "My Account", icon: HiOutlineUser, onClick: () => {} },
     {
@@ -22,7 +26,11 @@ const ProfileMenuContent: React.FC = () => {
     { label: "Settings", icon: MdOutlineSettings, onClick: () => {} },
   ];
   const logoutContent = [
-    { label: "Logout", icon: IoMdLogOut, onClick: () => {} },
+    {
+      label: "Logout",
+      icon: IoMdLogOut,
+      onClick: () => redirectTo(routes.login.url),
+    },
   ];
 
   const loggedInUser = {
@@ -75,6 +83,7 @@ const ProfileMenuContent: React.FC = () => {
             containerClassName="cursor-pointer hover:text-black"
             iconClassName="my-auto font-bold"
             labelClassName="text-[11px] text-secondary my-auto"
+            onClick={item?.onClick}
           />
         ))}
       </Flex>

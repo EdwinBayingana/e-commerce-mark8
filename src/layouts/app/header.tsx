@@ -60,7 +60,7 @@ const HeaderComponent: React.FC = () => {
                   label={item?.label}
                   containerClassName="cursor-pointer hover:text-black"
                   iconClassName="my-auto font-bold"
-                  labelClassName="text-[11px] text-textGray"
+                  labelClassName="hidden md:block text-[11px] text-textGray"
                 />
               ))}
             </span>
@@ -76,7 +76,7 @@ const HeaderComponent: React.FC = () => {
                   isActionRequired={item?.isActionRequired}
                   containerClassName="cursor-pointer hover:text-black"
                   iconClassName="my-auto font-bold"
-                  labelClassName="text-[11px] text-textGray"
+                  labelClassName="hidden md:block text-[11px] text-textGray"
                 />
               ))}
             </span>

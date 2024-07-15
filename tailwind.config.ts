@@ -18,6 +18,7 @@ const config: Config = {
         borderColor: "#DBDBDB",
         primaryBackground: "#FFFFFF",
         secondaryBackground: "#F4F5F6",
+        searchBackground: "#25313c",
         textGray: "#79878F",
         textDarkGray: "#495D69",
       },

@@ -11,6 +11,7 @@ interface IconWithLabelProps {
   labelClassName?: string;
   isActionRequired?: boolean;
   justify?: string;
+  onClick?: () => void;
 }
 
 const IconWithLabel: React.FC<IconWithLabelProps> = ({
@@ -24,6 +25,7 @@ const IconWithLabel: React.FC<IconWithLabelProps> = ({
   iconClassName,
   labelClassName,
   justify = "space-between",
+  onClick,
 }) => {
   return (
     <Flex
@@ -31,6 +33,7 @@ const IconWithLabel: React.FC<IconWithLabelProps> = ({
       justify={justify}
       style={{ color: iconColor }}
       className={containerClassName}
+      onClick={onClick}
     >
       <Icon size={iconSize} className={iconClassName} />
 
