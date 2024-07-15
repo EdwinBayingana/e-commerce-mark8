@@ -10,10 +10,7 @@ const CentralCardContent: FC = () => {
   const cardInnerClassName = `${isLoginPage ? "w-full md:w-[50%]" : "w-full"} p-5 md:p-7`;
 
   return (
-    <Flex
-      justify="space-between"
-      className={`${isLoginPage ? "md:h-[40vh]" : "md:h-[50vh]"}`}
-    >
+    <Flex justify="space-between" className="md:max-h-[500px]">
       {isLoginPage && (
         <Flex
           vertical
