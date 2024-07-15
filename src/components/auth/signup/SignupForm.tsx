@@ -22,7 +22,7 @@ const SignupForm: React.FC = () => {
 
   return (
     <Form layout="vertical" className="h-full">
-      <Flex vertical justify="space-between" className="h-full w-full">
+      <Flex vertical justify="space-between" gap={20} className="h-full w-full">
         <Typography variant="subTitle" className="mb-2 md:mb-0">
           Register
         </Typography>

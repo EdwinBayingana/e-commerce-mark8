@@ -18,7 +18,7 @@ const AuthContent: FC<IAuthContentProps> = ({
     "md:w-[80vw] lg:w-[60vw] xl:w-[50vw] 2xl:w-[40vw]";
   const forgotPasswordMobileStyles = "md:w-[40vw] xl:w-[30vw] 2xl:w-[25vw]";
 
-  const cardOuterClassName = `border-none bg-primaryBackground iphoneSE:w-[90vw] xxs:w-[90vw] pro:w-[60vw] ${isLoginPage || isSignupPage ? loginAndSignupMobileStyles : forgotPasswordMobileStyles}`;
+  const cardOuterClassName = `border-none bg-primaryBackground iphoneSE:w-[90vw] xxs:w-[90vw] pro:w-[60vw] max-w-[1000px] ${isLoginPage || isSignupPage ? loginAndSignupMobileStyles : forgotPasswordMobileStyles}`;
   const outerCardStyles = { body: { padding: 0, overflow: "hidden" } };
 
   return (
@@ -35,7 +35,7 @@ const AuthContent: FC<IAuthContentProps> = ({
         <Card className={cardOuterClassName} styles={outerCardStyles}>
           <Flex
             justify="space-between"
-            className="flex-col md:flex-row md:h-[13vh] gap-2 md:gap-0 p-3 md:p-7 rounded-xl"
+            className="flex-col md:flex-row md:max-h-[500px] gap-2 md:gap-0 p-3 md:p-7 rounded-xl"
           >
             {BottomCardContentLeft && <BottomCardContentLeft />}
             {BottomCardContentRight && <BottomCardContentRight />}

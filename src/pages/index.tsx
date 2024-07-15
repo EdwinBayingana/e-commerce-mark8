@@ -1,8 +1,8 @@
-import Typography from "@components/shared/typography";
 import AppLayout from "@layouts/app";
 import Head from "next/head";
 import { Fragment, ReactElement } from "react";
 import { NextPage } from "next";
+import HomeContent from "@components/home";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactElement;
@@ -14,12 +14,7 @@ const HomePage: NextPageWithLayout = () => {
       <Head>
         <title>Home | Mark8</title>
       </Head>
-      <Typography
-        variant="title"
-        className="flex items-center justify-center h-screen border text-green-500"
-      >
-        Home
-      </Typography>
+      <HomeContent />
     </Fragment>
   );
 };

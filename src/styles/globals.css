@@ -86,3 +86,12 @@ input[type="number"] {
 *::-webkit-scrollbar-thumb {
   background-color: #434242;
 }
+
+.scrollbar-hide {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
