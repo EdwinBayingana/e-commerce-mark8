@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 interface PopoverModalProps extends PopoverProps {
   content: ReactNode;
   trigger: PopoverProps["trigger"];
-  title: ReactNode;
+  title?: ReactNode;
   children: ReactNode;
   className?: string;
   rootClassName?: string;

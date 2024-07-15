@@ -32,6 +32,7 @@ export const BottomCardContentRight = () => {
     <Button
       type="secondary"
       onClick={() => redirectTo(buttonRedirectionPathname)}
+      className="my-auto"
     >
       {isLoginPage ? "Register Here" : "Login"}
       <ButtonDisplayIcon

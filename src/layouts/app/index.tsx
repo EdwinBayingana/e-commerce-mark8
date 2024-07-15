@@ -1,5 +1,7 @@
 import { Layout } from "antd";
 import React, { FC, Fragment } from "react";
+import FooterComponent from "./footer";
+import HeaderComponent from "./header";
 
 const { Content } = Layout;
 
@@ -12,7 +14,11 @@ const AppLayout: FC<Props> = ({ children }) => {
     <Layout>
       <Layout>
         <Fragment>
-          <Content>{children}</Content>
+          <HeaderComponent />
+          <Content className="bg-primaryBackground h-screen">
+            {children}
+          </Content>
+          <FooterComponent />
         </Fragment>
       </Layout>
     </Layout>

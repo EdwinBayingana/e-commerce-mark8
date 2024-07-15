@@ -14,6 +14,7 @@ const config: Config = {
         primaryDark: "#C1CF16",
         secondary: "#1C2834",
         secondaryDark: "#141C24",
+        danger: "#EE4545",
         borderColor: "#DBDBDB",
         primaryBackground: "#FFFFFF",
         secondaryBackground: "#F4F5F6",
