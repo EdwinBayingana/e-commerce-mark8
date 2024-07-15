@@ -1,4 +1,3 @@
-import Typography from "@components/shared/typography";
 import { PrimaryLogo as PrimaryLogoAsset } from "@utils/images";
 import routes from "@utils/routes";
 import { Flex, Typography as AntdTypography } from "antd";
@@ -9,7 +8,13 @@ import { FC } from "react";
 interface LogoProps {
   clickable?: boolean;
   className?: string;
+  title?: string;
+  caption?: string;
   isHeaderLogo?: boolean;
+  justify?: string;
+  gap?: number;
+  imageSrc?: string;
+  isProfileMenuAvatar?: boolean;
 }
 
 export const PrimaryLogo: FC<LogoProps> = ({ clickable, className }) => {
@@ -34,13 +39,19 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
   clickable,
   className,
   isHeaderLogo,
+  title = "Mark8",
+  caption = "By Awesomity Lab",
+  justify = "space-between",
+  gap = 10,
+  imageSrc = PrimaryLogoAsset,
+  isProfileMenuAvatar,
 }) => {
   const router = useRouter();
 
   return (
     <Flex
-      justify="space-between"
-      gap={10}
+      justify={justify}
+      gap={gap}
       className="cursor-pointer"
       onClick={() => {
         clickable && router.push(routes.home.url);
@@ -48,10 +59,10 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
     >
       <div className={`relative w-9 h-9 my-auto ${className}`}>
         <Image
-          src={PrimaryLogoAsset}
-          alt="Mark8 company logo"
+          src={imageSrc}
+          alt={title}
           fill
-          className={`object-contain rounded-md ${clickable && "cursor-pointer"}`}
+          className={`${isProfileMenuAvatar ? "object-fill rounded-xl" : "object-contain rounded-md"}  ${clickable && "cursor-pointer"}`}
         />
       </div>
       <Flex
@@ -61,11 +72,11 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
         className={`${!isHeaderLogo && "justify-center"} my-auto`}
       >
         <AntdTypography className="self-start text-[13px] text-secondary font-bold">
-          Mark8
+          {title}
         </AntdTypography>
         {isHeaderLogo && (
           <AntdTypography className="self-start text-textGray text-[10px]">
-            By Awesomity Lab
+            {caption}
           </AntdTypography>
         )}
       </Flex>
