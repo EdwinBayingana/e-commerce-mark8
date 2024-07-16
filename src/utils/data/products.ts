@@ -68,3 +68,30 @@ export const dummyProducts = [
     isSaved: true,
   },
 ];
+
+export const dummyCartProducts = [
+  {
+    id: 1,
+    name: "Product 1",
+    description: "This is Product 1",
+    categoryId: "1",
+    unitPrice: 9000,
+    thumbnail: AuthBackgroundImage,
+    storeId: "1",
+    isAddedToCard: true,
+    isSaved: false,
+    quantity: 2,
+  },
+  {
+    id: 2,
+    name: "Product 2",
+    description: "This is Product 2",
+    categoryId: "1",
+    unitPrice: 6000,
+    thumbnail: AuthBackgroundImage,
+    storeId: "1",
+    isAddedToCard: false,
+    isSaved: true,
+    quantity: 4,
+  },
+];
