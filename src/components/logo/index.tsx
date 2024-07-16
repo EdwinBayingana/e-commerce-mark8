@@ -15,6 +15,8 @@ interface LogoProps {
   gap?: number;
   imageSrc?: string;
   isProfileMenuAvatar?: boolean;
+  labelClassName?: string;
+  isTopStoreIcon?: boolean;
 }
 
 export const PrimaryLogo: FC<LogoProps> = ({ clickable, className }) => {
@@ -45,6 +47,8 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
   gap = 10,
   imageSrc = PrimaryLogoAsset,
   isProfileMenuAvatar,
+  labelClassName = "self-start text-[13px] text-secondary font-bold",
+  isTopStoreIcon,
 }) => {
   const router = useRouter();
 
@@ -62,7 +66,7 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
           src={imageSrc}
           alt={title}
           fill
-          className={`${isProfileMenuAvatar ? "object-fill rounded-xl" : "object-contain rounded-md"}  ${clickable && "cursor-pointer"}`}
+          className={`${isProfileMenuAvatar || isTopStoreIcon ? "object-fill rounded-xl" : "object-contain rounded-md"}  ${clickable && "cursor-pointer"}`}
         />
       </div>
       <Flex
@@ -71,13 +75,19 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
         align="center"
         className={`${!isHeaderLogo && "justify-center"} my-auto`}
       >
-        <AntdTypography className="self-start text-[13px] text-secondary font-bold">
+        <AntdTypography
+          className={`${labelClassName} ${isHeaderLogo && "hidden md:flex"}`}
+        >
           {title}
         </AntdTypography>
-        {isHeaderLogo && (
-          <AntdTypography className="self-start text-textGray text-[10px]">
+        {isHeaderLogo || isTopStoreIcon ? (
+          <AntdTypography
+            className={`${isHeaderLogo && "hidden md:flex"} self-start text-textGray text-[10px]`}
+          >
             {caption}
           </AntdTypography>
+        ) : (
+          <></>
         )}
       </Flex>
     </Flex>

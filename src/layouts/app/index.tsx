@@ -15,7 +15,7 @@ const AppLayout: FC<Props> = ({ children }) => {
       <Layout>
         <Fragment>
           <HeaderComponent />
-          <Content className="bg-primaryBackground h-screen w-full px-[3.5%]">
+          <Content className="bg-primaryBackground w-full px-[3.5%]">
             {children}
           </Content>
           <FooterComponent />

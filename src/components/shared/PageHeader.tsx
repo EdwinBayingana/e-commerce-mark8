@@ -34,7 +34,7 @@ const PageHeader: FC = () => {
         type="search"
         variant="borderless"
         size="small"
-        className="iphoneSE:w-full pro:w-[90%] md:w-[60%] lg:w-[40%] bg-searchBackground py-2 px-1 rounded-lg"
+        className="iphoneSE:w-full pro:w-[90%] md:w-[60%] lg:w-[40%] bg-searchBackground py-2 px-1 rounded-lg custom-header-input-text-size"
         placeholder="What are you looking for?"
       />
 
