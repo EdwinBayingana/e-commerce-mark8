@@ -45,6 +45,14 @@ body {
 .custom-input-text .ant-input {
   @apply text-secondary;
 }
+.custom-input-text-size .ant-input {
+  @apply text-secondary;
+  font-size: smaller;
+}
+.custom-header-input-text-size .ant-input {
+  @apply text-white;
+  font-size: smaller;
+}
 
 .custom-input-password-text .ant-input-password {
   @apply text-secondary;
