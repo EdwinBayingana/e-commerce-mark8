@@ -103,3 +103,16 @@ input[type="number"] {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* For Chrome, Safari, and Opera */
 }
+
+/* Breadcrumb */
+.custom-breadcrumb .ant-breadcrumb-link {
+  color: black;
+  font-size: smaller;
+}
+
+.custom-breadcrumb .ant-breadcrumb-link a,
+.custom-breadcrumb .ant-breadcrumb-separator {
+  color: black !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}

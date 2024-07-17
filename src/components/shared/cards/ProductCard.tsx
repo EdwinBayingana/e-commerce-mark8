@@ -28,8 +28,10 @@ const ProductCard = (product: any) => {
           <Typography variant="body" className="font-semibold text-[10px]">
             {product?.product?.name}
           </Typography>
-          <Typography variant="body" className="!text-primary font-bold">
-            {product?.product?.unitPrice?.toLocaleString() || 0}
+          <Typography variant="body" className="font-bold">
+            <span className="text-primary">
+              {product?.product?.unitPrice?.toLocaleString() || 0}&nbsp;Rwf
+            </span>
             <span className="text-[10px] line-through text-textLightGray ml-2">
               {unitPriceBefore?.toLocaleString() || 0}
             </span>
