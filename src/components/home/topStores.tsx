@@ -14,7 +14,7 @@ const TopStores: FC = () => {
     <Flex
       vertical
       justify="normal"
-      className="mt-5 lg:my-0 lg:w-[25%] rounded-2xl border "
+      className="mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border "
     >
       <Flex justify="space-between" className="m-4">
         <Flex align="center" gap={10}>

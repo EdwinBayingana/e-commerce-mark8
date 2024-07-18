@@ -17,9 +17,9 @@ const ProductCard = (product: any) => {
       className="border border-borderColor rounded-2xl"
     >
       <Image
-        src={product?.product?.thumbnail || AuthBackgroundImage}
+        src={product?.product?.images[0] || AuthBackgroundImage}
         alt={`${product?.product?.name || "Awesomity logo"}`}
-        className="w-full h-full rounded-t-2xl object-fill cursor-pointer"
+        className="w-full min-h-[25vh] max-h-[25vh] rounded-t-2xl object-cover cursor-pointer"
         preview={false}
       />
 

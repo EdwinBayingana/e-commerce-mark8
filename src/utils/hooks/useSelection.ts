@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-const useSelection = (defaultItem: string | number | null) => {
-  const [selectedItem, setSelectedItem] = useState<string | number | null>(
-    defaultItem,
-  );
+const useSelection = (defaultItem: string | number | any) => {
+  const [selectedItem, setSelectedItem] = useState(defaultItem);
 
   const handleSelectItem = (item: string | number) => {
     setSelectedItem(item);
