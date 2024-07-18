@@ -21,8 +21,13 @@ const routes = {
   },
   saved: {
     label: "Saved",
-    url: "/",
+    url: "/saved",
     name: "saved",
+  },
+  stores: {
+    label: "Stores",
+    url: "/stores",
+    name: "stores",
   },
   setCookie: {
     url: "/api/setCookie",
