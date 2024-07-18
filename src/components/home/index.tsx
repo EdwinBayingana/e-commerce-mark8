@@ -18,7 +18,7 @@ const HomeContent: FC = () => {
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
-      <div className="mt-[25%] md:mt-[4.5%] w-full" />
+      <div className="content-wrapper w-full" />
       <PageHeader />
 
       <Flex justify="space-between" className="my-3">

@@ -35,7 +35,7 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
       label: routes.stores.label,
       icon: BiStoreAlt,
       pathname: routes.stores.url,
-      onClick: () => {},
+      onClick: () => redirectTo(routes.stores.url),
     },
   ];
 
@@ -125,7 +125,7 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
                     onClick={item?.onClick}
                     containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
                     iconClassName="my-auto font-bold"
-                    labelClassName="hidden md:block text-[11px] text-textGray"
+                    labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
                   />
                 );
               })}
@@ -145,7 +145,7 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
                     isActionRequired={item?.isActionRequired}
                     containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
                     iconClassName="my-auto font-bold"
-                    labelClassName="hidden md:block text-[11px] text-textGray"
+                    labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
                   />
                 );
               })}
