@@ -13,6 +13,7 @@ import PopoverModal from "@components/shared/modal/popover";
 import ProfileMenuContent from "@components/navbar/ProfileMenuContent";
 import IconWithLabel from "@components/navbar/IconWithLabel";
 import { FC } from "react";
+import routes from "@utils/routes";
 const { Header } = Layout;
 
 interface HeaderProps {
@@ -33,7 +34,7 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
       onClick: handleOpenCartDrawer,
       isActionRequired: true,
     },
-    { label: "Saved", icon: FaRegHeart, onClick: () => {} },
+    { label: routes.saved.label, icon: FaRegHeart, onClick: () => {} },
   ];
 
   const iconsGap = 35;
