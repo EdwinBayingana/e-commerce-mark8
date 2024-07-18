@@ -7,7 +7,7 @@ import { Breadcrumb, Col, Flex, Row } from "antd";
 import React, { FC } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import ImageCarouselComponent from "./ImageCarousel";
-import OpenStoreHeader from "./OpenStoreHeader";
+import OpenStoreHeader from "../shared/OpenStoreHeader";
 import ProductDetailsComponent from "./ProductDetails";
 
 interface Props {

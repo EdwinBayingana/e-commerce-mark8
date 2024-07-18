@@ -13,6 +13,8 @@ import PopoverModal from "@components/shared/modal/popover";
 import ProfileMenuContent from "@components/navbar/ProfileMenuContent";
 import IconWithLabel from "@components/navbar/IconWithLabel";
 import { FC } from "react";
+import routes from "@utils/routes";
+import useRedirection from "@utils/hooks/useRedirection";
 const { Header } = Layout;
 
 interface HeaderProps {
@@ -20,9 +22,21 @@ interface HeaderProps {
 }
 
 const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
+  const { redirectTo, pathname } = useRedirection();
+
   const headerIconsLeft = [
-    { label: "Home", icon: TbSmartHome, onClick: () => {} },
-    { label: "Stores", icon: BiStoreAlt, onClick: () => {} },
+    {
+      label: routes.home.label,
+      icon: TbSmartHome,
+      pathname: routes.home.url,
+      onClick: () => redirectTo(routes.home.url),
+    },
+    {
+      label: routes.stores.label,
+      icon: BiStoreAlt,
+      pathname: routes.stores.url,
+      onClick: () => {},
+    },
   ];
 
   const headerIconsRight = [
@@ -33,7 +47,12 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
       onClick: handleOpenCartDrawer,
       isActionRequired: true,
     },
-    { label: "Saved", icon: FaRegHeart, onClick: () => {} },
+    {
+      label: routes.saved.label,
+      icon: FaRegHeart,
+      pathname: routes.saved.url,
+      onClick: () => redirectTo(routes.saved.url),
+    },
   ];
 
   const iconsGap = 35;
@@ -94,35 +113,42 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
       >
         <Flex justify="space-between" className="text-center w-full">
           <Flex className="text-center" gap={iconsGap}>
-            <PrimaryLogoWithLabel isHeaderLogo={true} />
+            <PrimaryLogoWithLabel isHeaderLogo={true} clickable={true} />
             <span className={iconsSpanClassName}>
-              {headerIconsLeft?.map((item, index) => (
-                <IconWithLabel
-                  key={index}
-                  Icon={item?.icon}
-                  label={item?.label}
-                  containerClassName="cursor-pointer hover:text-black"
-                  iconClassName="my-auto font-bold"
-                  labelClassName="hidden md:block text-[11px] text-textGray"
-                />
-              ))}
+              {headerIconsLeft?.map((item, index) => {
+                const isSelected = pathname === item?.pathname;
+                return (
+                  <IconWithLabel
+                    key={index}
+                    Icon={item?.icon}
+                    label={item?.label}
+                    onClick={item?.onClick}
+                    containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
+                    iconClassName="my-auto font-bold"
+                    labelClassName="hidden md:block text-[11px] text-textGray"
+                  />
+                );
+              })}
             </span>
           </Flex>
 
           <Flex className="text-center" gap={iconsGap}>
             <span className={iconsSpanClassName}>
-              {headerIconsRight?.map((item, index) => (
-                <IconWithLabel
-                  key={index}
-                  Icon={item?.icon}
-                  label={item?.label}
-                  onClick={item?.onClick}
-                  isActionRequired={item?.isActionRequired}
-                  containerClassName="cursor-pointer hover:text-black"
-                  iconClassName="my-auto font-bold"
-                  labelClassName="hidden md:block text-[11px] text-textGray"
-                />
-              ))}
+              {headerIconsRight?.map((item, index) => {
+                const isSelected = pathname === item?.pathname;
+                return (
+                  <IconWithLabel
+                    key={index}
+                    Icon={item?.icon}
+                    label={item?.label}
+                    onClick={item?.onClick}
+                    isActionRequired={item?.isActionRequired}
+                    containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
+                    iconClassName="my-auto font-bold"
+                    labelClassName="hidden md:block text-[11px] text-textGray"
+                  />
+                );
+              })}
             </span>
             <Flex gap={10}>
               <Button type="secondary" onClick={() => {}} className="my-auto">
