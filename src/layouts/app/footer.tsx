@@ -11,7 +11,7 @@ const { Footer } = Layout;
 const FooterComponent: React.FC = () => {
   const footerSocials = [FaXTwitter, FaInstagram, LiaYoutube, FiLinkedin];
   return (
-    <Footer className="text-center" style={{ backgroundColor: "#F4F5F6" }}>
+    <Footer className="text-center bg-primaryBackgroundLight">
       <Flex justify="space-between">
         <PrimaryLogoWithLabel />
 

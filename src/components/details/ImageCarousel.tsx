@@ -15,12 +15,12 @@ const ImageCarouselComponent: FC<Props> = ({ productImages, productName }) => {
     <Flex
       vertical
       justify="normal"
-      className="border rounded-xl md:w-[45%] h-full"
+      className="border rounded-xl h-[60vh] 2xl:min-h-[500px] 2xl:max-h-[500px]"
     >
       <Image
         src={selectedItem || AuthBackgroundImage}
         alt={`${productName || "Product Image"}`}
-        className="w-full min-h-[45vh] max-h-[45vh] lg:min-h-[55vh] lg:max-h-[55vh] 2xl:min-h-[400px] 2xl:max-h-[400px] object-cover cursor-pointer rounded-t-xl"
+        className="h-[50vh] 2xl:h-[420px] w-[45vw] 2xl:w-[700px] object-cover cursor-pointer rounded-t-xl"
         preview={false}
       />
       <Row

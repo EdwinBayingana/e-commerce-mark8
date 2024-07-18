@@ -19,15 +19,20 @@ const ProductCard = (product: any) => {
       <Image
         src={product?.product?.images[0] || AuthBackgroundImage}
         alt={`${product?.product?.name || "Awesomity logo"}`}
-        className="w-full min-h-[25vh] max-h-[25vh] rounded-t-2xl object-cover cursor-pointer"
+        className="w-full min-h-[27vh] max-h-[27vh] 2xl:min-h-60 2xl:max-h-60 rounded-t-2xl object-cover cursor-pointer"
         preview={false}
       />
 
       <Flex justify="space-between" gap={7} className="p-3">
         <Flex vertical justify="normal" gap={8}>
-          <Typography variant="body" className="font-semibold text-[10px]">
-            {product?.product?.name}
-          </Typography>
+          <span className="max-w-[45vw] pro:max-w-[50vw] md:max-w-[12vw]">
+            <Typography
+              variant="body"
+              className="font-semibold text-[10px] line-clamp-1"
+            >
+              {product?.product?.name}
+            </Typography>
+          </span>
           <Typography variant="body" className="font-bold">
             <span className="text-primary">
               {product?.product?.unitPrice?.toLocaleString() || 0}&nbsp;Rwf

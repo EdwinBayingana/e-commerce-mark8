@@ -23,7 +23,7 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
     <Flex
       vertical
       justify="space-between"
-      className="border rounded-xl h-full md:w-[55%] min-h-[45vh] max-h-[45vh] lg:min-h-[55vh] lg:max-h-[67vh] 2xl:min-h-[500px] 2xl:max-h-[500px]"
+      className="border rounded-xl h-[60vh] md:w-[65%] 2xl:min-h-[500px] 2xl:max-h-[500px]"
     >
       <Flex
         align="center"

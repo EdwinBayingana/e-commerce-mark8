@@ -3,7 +3,7 @@ import { useState } from "react";
 const useSelection = (defaultItem: string | number | any) => {
   const [selectedItem, setSelectedItem] = useState(defaultItem);
 
-  const handleSelectItem = (item: string | number) => {
+  const handleSelectItem = (item: string | number | any) => {
     setSelectedItem(item);
   };
 
