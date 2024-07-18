@@ -4,7 +4,8 @@ export const dummyProducts = [
   {
     id: 1,
     name: "Camera",
-    description: "This is Product 1 === Camera",
+    description:
+      "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
     categoryId: "1",
     unitPrice: 9000,
     thumbnail: AuthBackgroundImage,
@@ -21,7 +22,8 @@ export const dummyProducts = [
   {
     id: 2,
     name: "Guitar pick",
-    description: "This is Product 2 === guitar pick",
+    description:
+      "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
     categoryId: "1",
     unitPrice: 6000,
     thumbnail: AuthBackgroundImage,
@@ -38,7 +40,8 @@ export const dummyProducts = [
   {
     id: 3,
     name: "Product 3",
-    description: "This is Product 3",
+    description:
+      "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
     categoryId: "1",
     unitPrice: 5500,
     thumbnail: AuthBackgroundImage,
@@ -60,10 +63,10 @@ export const dummyProducts = [
     unitPrice: 9000,
     thumbnail: AuthBackgroundImage,
     images: [
-      "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-madebymath-90946.jpg&fm=jpg",
-      "https://images.pexels.com/photos/821651/pexels-photo-821651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/11484700/pexels-photo-11484700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/1787236/pexels-photo-1787236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/3801990/pexels-photo-3801990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/4098064/pexels-photo-4098064.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+      "https://images.pexels.com/photos/4098022/pexels-photo-4098022.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+      "https://images.pexels.com/photos/14050341/pexels-photo-14050341.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
     ],
     storeId: "2",
     isAddedToCard: false,
@@ -71,8 +74,9 @@ export const dummyProducts = [
   },
   {
     id: 5,
-    name: "Product 5",
-    description: "This is Product 5",
+    name: "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
+    description:
+      "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
     categoryId: "2",
     unitPrice: 9000,
     thumbnail: AuthBackgroundImage,
@@ -89,15 +93,16 @@ export const dummyProducts = [
   {
     id: 6,
     name: "Product 6",
-    description: "This is Product 6",
+    description:
+      "A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.",
     categoryId: "2",
     unitPrice: 9000,
-    thumbnail: AuthBackgroundImage,
+
     images: [
-      "https://images.pexels.com/photos/3801990/pexels-photo-3801990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/4098064/pexels-photo-4098064.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-      "https://images.pexels.com/photos/4098022/pexels-photo-4098022.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-      "https://images.pexels.com/photos/14050341/pexels-photo-14050341.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+      "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-madebymath-90946.jpg&fm=jpg",
+      "https://images.pexels.com/photos/821651/pexels-photo-821651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/11484700/pexels-photo-11484700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/1787236/pexels-photo-1787236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     ],
     storeId: "2",
     isAddedToCard: false,

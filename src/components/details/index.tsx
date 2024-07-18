@@ -26,7 +26,14 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
       title: "Vectors",
     },
     {
-      title: <span className="text-textGray">{product?.name}</span>,
+      title: (
+        <Flex align="center" className="max-w-[10vw] flex-end">
+          <span className="text-textGray line-clamp-1 pt-0.5">
+            {product?.name}
+            {/* Another one */}
+          </span>
+        </Flex>
+      ),
     },
   ];
 
@@ -54,6 +61,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
         <ProductDetailsComponent
           name={product?.name || ""}
           description={product?.description || ""}
+          price={product?.unitPrice || 0}
         />
       </Flex>
     </Flex>

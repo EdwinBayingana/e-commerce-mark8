@@ -20,7 +20,7 @@ const ImageCarouselComponent: FC<Props> = ({ productImages, productName }) => {
       <Image
         src={selectedItem || AuthBackgroundImage}
         alt={`${productName || "Product Image"}`}
-        className="w-full min-h-[45vh] max-h-[45vh] lg:min-h-[55vh] lg:max-h-[55vh] object-cover cursor-pointer rounded-t-xl"
+        className="w-full min-h-[45vh] max-h-[45vh] lg:min-h-[55vh] lg:max-h-[55vh] 2xl:min-h-[400px] 2xl:max-h-[400px] object-cover cursor-pointer rounded-t-xl"
         preview={false}
       />
       <Row
