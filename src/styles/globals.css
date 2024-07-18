@@ -103,3 +103,87 @@ input[type="number"] {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* For Chrome, Safari, and Opera */
 }
+
+/* Breadcrumb */
+.custom-breadcrumb .ant-breadcrumb-link {
+  color: black;
+  font-size: smaller;
+}
+
+.custom-breadcrumb .ant-breadcrumb-link a,
+.custom-breadcrumb .ant-breadcrumb-separator {
+  color: black !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.content-wrapper {
+  margin-top: 60px;
+}
+
+@media (max-width: 249px) {
+  .content-wrapper {
+    margin-top: 30%;
+  }
+}
+
+@media (min-width: 250px) and (max-width: 320px) {
+  .content-wrapper {
+    margin-top: 25%;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  .content-wrapper {
+    margin-top: 25%;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 429px) {
+  .content-wrapper {
+    margin-top: 20%;
+  }
+}
+@media (min-width: 430px) and (max-width: 490px) {
+  .content-wrapper {
+    margin-top: 18%;
+  }
+}
+@media (min-width: 491px) and (max-width: 576px) {
+  .content-wrapper {
+    margin-top: 16%;
+  }
+}
+@media (min-width: 491px) and (max-width: 540px) {
+  .content-wrapper {
+    margin-top: 15%;
+  }
+}
+
+@media (min-width: 541px) and (max-width: 600px) {
+  .content-wrapper {
+    margin-top: 14%;
+  }
+}
+@media (min-width: 601px) and (max-width: 690px) {
+  .content-wrapper {
+    margin-top: 12%;
+  }
+}
+@media (min-width: 691px) and (max-width: 767px) {
+  .content-wrapper {
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content-wrapper {
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .content-wrapper {
+    margin-top: 6%;
+  }
+}

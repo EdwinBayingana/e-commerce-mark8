@@ -134,16 +134,6 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
           </Flex>
         </Flex>
       </Header>
-      {/* <Drawer
-        title={false}
-        closable={false}
-        placement="right"
-        height="95%"
-        className="bg-secondaryBackground"
-        bodyStyle={{ padding: 13 }}
-        open={isOpen}
-        onClose={close}
-      /> */}
     </Layout>
   );
 };

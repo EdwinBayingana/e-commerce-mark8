@@ -20,6 +20,7 @@ const config: Config = {
         primaryBackgroundLight: "#F7F8FB",
         secondaryBackground: "#F4F5F6",
         searchBackground: "#25313c",
+        searchBackgroundLight: "#0c0c0d10",
         textGray: "#79878F",
         textLightGray: "#c2c5c6",
         textDarkGray: "#495D69",
