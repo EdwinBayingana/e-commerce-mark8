@@ -42,7 +42,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
-      <div className="mt-[10%] md:mt-[6.5%] w-full" />
+      <div className="content-wrapper w-full" />
       <Flex gap={20} className="mb-[2%]">
         <FaArrowLeftLong
           className="text-primary my-auto cursor-pointer"
@@ -52,7 +52,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
         <Breadcrumb items={breadcrumbItems} className="custom-breadcrumb" />
       </Flex>
 
-      <Flex gap={20}>
+      <Flex gap={20} className="flex-col md:flex-row">
         <ImageCarouselComponent
           key={product?.id}
           productName={product?.name}
@@ -86,6 +86,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
               </Col>
             ))}
         </Row>
+
         <OpenStoreHeader />
       </Flex>
     </Flex>

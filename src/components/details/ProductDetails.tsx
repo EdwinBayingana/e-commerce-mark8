@@ -23,7 +23,7 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
     <Flex
       vertical
       justify="space-between"
-      className="border rounded-xl h-[60vh] md:w-[65%] 2xl:min-h-[500px] 2xl:max-h-[500px]"
+      className="border rounded-xl h-[80vh] pro:h-[60vh] md:w-[50%] lg:w-[65%] 2xl:min-h-[500px] 2xl:max-h-[500px]"
     >
       <Flex
         align="center"
@@ -31,14 +31,14 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
         className="px-6 py-3"
         gap={15}
       >
-        <span className="flex gap-5">
+        <span className="flex gap-3 md:gap-5">
           <Typography variant="body" className="font-bold my-auto">
             Product Details
           </Typography>
-          <Tag color="#F4F5F6" className="rounded-md">
+          <Tag color="#F4F5F6" className="rounded-md hidden xxs:flex">
             <Typography
               variant="body"
-              className="h-full text-secondary uppercase font-bold text-[8px]"
+              className="h-full text-secondary uppercase font-bold text-[6px] xxs:text-[8px] text-center"
             >
               In stock
             </Typography>
@@ -46,9 +46,13 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
         </span>
 
         <span className="flex gap-5">
-          <Button type="secondary" onClick={() => {}} className="my-auto">
+          <Button
+            type="secondary"
+            onClick={() => {}}
+            className="my-auto hidden pro:flex"
+          >
             <HeartOutlined className="text-primary" size={13} />
-            <span className="font-bold">Save</span>
+            <span className="font-bold hidden pro:flex">Save</span>
           </Button>
           <SlOptionsVertical className="text-secondary my-auto" size={13} />
         </span>
@@ -101,22 +105,22 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
           </Flex>
         </Flex>
 
-        <Flex gap={15}>
-          <Flex gap={5} align="center">
+        <Flex gap={15} justify="space-between" className="flex-col x:flex-row">
+          <Flex gap={5} align="center" justify="center" className="h-11">
             <FiMinus
-              className="text-secondary border-[1.5px] border-borderColor w-full h-full p-2.5 rounded-lg cursor-pointer"
+              className="text-secondary border-[1.5px] border-borderColor w-full max-w-10  h-full p-2.5 rounded-lg cursor-pointer"
               size={16}
             />
             <span>
               <Typography
                 variant="body"
-                className="font-bold md:px-10 bg-secondaryBackground rounded-lg p-3 whitespace-nowrap"
+                className="font-bold px-10 bg-secondaryBackground rounded-lg p-3 whitespace-nowrap w-full"
               >
                 1
               </Typography>
             </span>
             <FiPlus
-              className="text-secondary border-[1.5px] border-borderColor w-full h-full p-2.5 rounded-lg cursor-pointer"
+              className="text-secondary border-[1.5px] border-borderColor w-full max-w-10 h-full p-2.5 rounded-lg cursor-pointer"
               size={16}
             />
           </Flex>
@@ -128,27 +132,28 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
       </Flex>
 
       <Flex
-        align="center"
         justify="space-between"
-        className="px-6 py-3"
+        className="px-6 py-3 flex-col pro:flex-row pro:items-center"
         gap={15}
       >
-        <span className="flex gap-3">
+        <span className="flex gap-3 flex-col md:flex-row">
           <Typography variant="body" className="font-bold my-auto">
             Store Info:
           </Typography>
-          <Image
-            src={AuthBackgroundImage}
-            alt={`${"Store Image"}`}
-            className={`w-6 h-6 object-cover cursor-pointer rounded-full`}
-            preview={false}
-          />
-          <Typography
-            variant="body"
-            className="font-semibold my-auto text-textGray"
-          >
-            Awesome Shop 1
-          </Typography>
+          <Flex gap={5} className="flex">
+            <Image
+              src={AuthBackgroundImage}
+              alt={`${"Store Image"}`}
+              className={`w-6 h-6 object-cover cursor-pointer rounded-full`}
+              preview={false}
+            />
+            <Typography
+              variant="body"
+              className="font-semibold my-auto text-textGray"
+            >
+              Awesome Shop 1
+            </Typography>
+          </Flex>
         </span>
 
         <span className="flex gap-5">

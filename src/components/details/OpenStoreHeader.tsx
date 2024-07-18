@@ -10,14 +10,14 @@ const OpenStoreHeader: FC = () => {
     <Flex
       align="center"
       justify="space-between"
-      className="p-9 my-5 rounded-2xl bg-primaryBackgroundLight"
+      className="p-5 md:p-9 my-5 rounded-2xl bg-primaryBackgroundLight flex-col md:flex-row"
       gap={18}
     >
       <Typography variant="subTitle" className="text-secondary">
         <span className="text-primary">Open</span> your Store
       </Typography>
 
-      <Flex gap={10} justify="space-between" className="w-[50%]">
+      <Flex gap={10} justify="space-between" className="md:w-[50%]">
         <Input
           addonBefore={
             <CgMail size={16} className="text-primary cursor-pointer" />
