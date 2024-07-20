@@ -39,7 +39,7 @@ const CartProductCard: FC<any> = ({ product, index }) => {
       >
         <Flex gap={5} align="center">
           <FiMinus
-            className="text-secondary border-[1.5px] border-borderColor h-full w-full p-2.5 rounded-lg cursor-pointer"
+            className="text-secondary border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg cursor-pointer"
             size={16}
           />
           <span>
@@ -51,14 +51,14 @@ const CartProductCard: FC<any> = ({ product, index }) => {
             </Typography>
           </span>
           <FiPlus
-            className="text-secondary border-[1.5px] border-borderColor h-full w-full p-2.5 rounded-lg cursor-pointer"
+            className="text-secondary border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg cursor-pointer"
             size={16}
           />
         </Flex>
 
         <span>
           <FiTrash
-            className="w-full h-full text-danger border-[1.5px] border-borderColor p-3 rounded-lg my-auto cursor-pointer"
+            className="h-10 w-10 text-danger border-[1.5px] border-borderColor p-3 rounded-lg my-auto cursor-pointer"
             size={13}
           />
         </span>

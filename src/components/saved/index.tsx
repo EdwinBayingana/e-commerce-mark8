@@ -14,7 +14,7 @@ const SavedProductsContent: FC<Props> = () => {
 
       <SavedProductsHeader />
 
-      <Flex vertical gap={20} className="h-full border">
+      <Flex vertical gap={20} className="h-full">
         <Row gutter={[16, 16]}>
           {dummyProducts.length &&
             dummyProducts?.map((product, index) => (

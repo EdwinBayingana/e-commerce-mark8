@@ -9,7 +9,11 @@ import CartProductCard from "../cards/CartProductCard";
 import { dummyCartProducts } from "@utils/data/products";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 
-const CartContent: FC = () => {
+interface CartContentProps {
+  close: () => void;
+}
+
+const CartContent: FC<CartContentProps> = ({ close }) => {
   const cartTotal = 42000;
 
   return (
@@ -17,7 +21,11 @@ const CartContent: FC = () => {
       <Flex vertical>
         <Flex justify="space-between" align="center" className="px-5">
           <span className="flex gap-3">
-            <IoCloseOutline className="text-secondary my-auto" size={13} />
+            <IoCloseOutline
+              className="text-secondary my-auto"
+              size={13}
+              onClick={() => close()}
+            />
             <Typography variant="body" className="font-bold">
               My Cart (2)
             </Typography>
@@ -34,11 +42,11 @@ const CartContent: FC = () => {
             </Button>
 
             <IoIosHeartEmpty
-              className="flex md:hidden text-primary border-[1.5px] bg-primaryBackground border-borderColor h-full w-full p-3 rounded-lg my-auto"
+              className="flex md:hidden text-primary border-[1.5px] bg-primaryBackground border-borderColor h-10 w-10 p-3 rounded-lg my-auto"
               size={13}
             />
             <FiTrash
-              className="text-danger border-[1.5px] bg-primaryBackground border-borderColor h-full w-full p-3 rounded-lg my-auto"
+              className="text-danger border-[1.5px] bg-primaryBackground border-borderColor h-10 w-10 p-3 rounded-lg my-auto"
               size={13}
             />
           </span>

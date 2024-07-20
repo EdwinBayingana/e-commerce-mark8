@@ -43,7 +43,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
       <div className="content-wrapper w-full" />
-      <Flex gap={20} className="mb-[2%]">
+      <Flex gap={20} className="my-[2%]">
         <FaArrowLeftLong
           className="text-primary my-auto cursor-pointer"
           size={16}
