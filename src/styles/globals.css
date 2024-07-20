@@ -133,34 +133,34 @@ input[type="number"] {
 
 @media (min-width: 250px) and (max-width: 320px) {
   .content-wrapper {
-    margin-top: 25%;
+    margin-top: 20%;
   }
 }
 
 @media (min-width: 321px) and (max-width: 375px) {
   .content-wrapper {
-    margin-top: 25%;
+    margin-top: 18%;
   }
 }
 
 @media (min-width: 376px) and (max-width: 429px) {
   .content-wrapper {
-    margin-top: 20%;
+    margin-top: 18%;
   }
 }
 @media (min-width: 430px) and (max-width: 490px) {
   .content-wrapper {
-    margin-top: 18%;
+    margin-top: 16%;
   }
 }
 @media (min-width: 491px) and (max-width: 576px) {
   .content-wrapper {
-    margin-top: 16%;
+    margin-top: 14%;
   }
 }
 @media (min-width: 491px) and (max-width: 540px) {
   .content-wrapper {
-    margin-top: 15%;
+    margin-top: 13%;
   }
 }
 
@@ -171,7 +171,7 @@ input[type="number"] {
 }
 @media (min-width: 601px) and (max-width: 690px) {
   .content-wrapper {
-    margin-top: 12%;
+    margin-top: 10%;
   }
 }
 @media (min-width: 691px) and (max-width: 767px) {

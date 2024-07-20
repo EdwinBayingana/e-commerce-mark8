@@ -14,7 +14,7 @@ const StoreProductCard = (product: any) => {
     <Flex
       vertical
       justify="normal"
-      className="border border-borderColor rounded-2xl min-w-[60vw] max-w-[60vw] md:min-w-[15vw] md:max-w-[15vw] md:min-h-[36vh] md:max-h-[36vh] my-auto"
+      className="border border-borderColor rounded-2xl min-w-[60vw] max-w-[60vw] md:min-w-[25vw] md:max-w-[25vw] lg:min-w-[20vw] lg:max-w-[20vw] 2xl:min-w-[12vw] 2xl:max-w-[12vw] my-auto mb-1"
     >
       <Image
         src={product?.product?.images[0] || AuthBackgroundImage}
@@ -26,7 +26,7 @@ const StoreProductCard = (product: any) => {
 
       <Flex justify="space-between" gap={7} className="p-3">
         <Flex vertical justify="normal" gap={8}>
-          <span className="max-w-[35vw] pro:max-w-[35vw] md:max-w-[10vw]">
+          <span className="max-w-[35vw] pro:max-w-[35vw] md:max-w-[10vw] lg:max-w-[7vw]">
             <Typography
               variant="body"
               className="font-semibold text-[10px] truncate whitespace-nowrap"

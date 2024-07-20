@@ -50,7 +50,7 @@ const StoreDetailsComponent: FC<Props> = ({
           </Flex>
         </span>
 
-        <span className="flex gap-2">
+        <span className="flex self-start md:self-auto gap-2">
           <Button type="primary" htmlType="submit" onClick={() => {}}>
             <HiOutlineUser className="text-secondary" size={14} />
             View Profile
@@ -135,7 +135,7 @@ const StoreDetailsComponent: FC<Props> = ({
             <Button
               type="secondary"
               onClick={() => {}}
-              className="flex md:w-[30%] md:mt-8"
+              className="flex md:w-[60%] lg:w-[45%] xl:w-[40%] md:mt-8"
             >
               <BiStoreAlt className="text-primary" size={13} />
               <span className="font-bold mt-0.5">Explore Products</span>
