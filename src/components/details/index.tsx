@@ -72,16 +72,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
         <Row gutter={[16, 16]}>
           {slicedProducts.length &&
             slicedProducts?.map((product, index) => (
-              <Col
-                key={index}
-                span={6}
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                xl={6}
-                onClick={() => redirectTo(`/product/${product?.id}`)}
-              >
+              <Col key={index} span={6} xs={24} sm={12} md={8} lg={6} xl={6}>
                 <ProductCard product={product} />
               </Col>
             ))}

@@ -17,11 +17,11 @@ import routes from "@utils/routes";
 import useRedirection from "@utils/hooks/useRedirection";
 const { Header } = Layout;
 
-interface HeaderProps {
+interface NavbarProps {
   handleOpenCartDrawer: () => void;
 }
 
-const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
+const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
   const { redirectTo, pathname } = useRedirection();
 
   const headerIconsLeft = [
@@ -84,15 +84,15 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
         }}
       >
         <Flex
-          className="border-[1.5px] border-borderColor rounded-lg cursor-pointer"
+          className="border-[1.5px] border-borderColor rounded-lg cursor-pointer h-11 my-auto"
           onClick={handleOpenMenu}
         >
           <HiOutlineUser
-            className="text-textGray border-r-[1.5px] border-borderColor h-full w-full px-2.5"
+            className="text-textGray border-r-[1.5px] border-borderColor h-auto w-11 px-2.5"
             size={28}
           />
 
-          <GoChevronDown className="text-black my-auto w-full" size={20} />
+          <GoChevronDown className="text-black my-auto w-7" size={20} />
         </Flex>
       </PopoverModal>
     );
@@ -164,4 +164,4 @@ const HeaderComponent: FC<HeaderProps> = ({ handleOpenCartDrawer }) => {
   );
 };
 
-export default HeaderComponent;
+export default NavbarComponent;
