@@ -16,7 +16,7 @@ import { FC } from "react";
 import routes from "@utils/routes";
 import useRedirection from "@utils/hooks/useRedirection";
 import useScreenSizes from "@utils/hooks/useScreenSizes";
-const { Header } = Layout;
+import SearchPopup from "@components/shared/modal/SearchPopup";
 
 interface NavbarProps {
   handleOpenCartDrawer: () => void;
@@ -24,7 +24,8 @@ interface NavbarProps {
 
 const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
   const { redirectTo, pathname } = useRedirection();
-  const { isMobileSM } = useScreenSizes();
+  const { isTablet } = useScreenSizes();
+  const { open, close, isOpen } = useDisclose();
 
   const headerIconsLeft = [
     {
@@ -42,7 +43,7 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
   ];
 
   const headerIconsRight = [
-    { label: "", icon: FiSearch, onClick: () => {} },
+    { label: "", icon: FiSearch, onClick: () => open() },
     {
       label: "My Cart",
       icon: HiOutlineShoppingCart,
@@ -60,7 +61,7 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
   const allIcons = [...headerIconsLeft, ...headerIconsRight];
 
   const iconsGap = 35;
-  const iconsSpanClassName = `${isMobileSM ? "hidden" : "flex"} my-auto gap-5 md:gap-8`;
+  const iconsSpanClassName = `${isTablet ? "hidden" : "flex"} my-auto gap-5 md:gap-8`;
 
   const ProfileDropdown = () => {
     const {
@@ -88,11 +89,11 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
         }}
       >
         <Flex
-          className="border-[1.5px] border-borderColor rounded-lg cursor-pointer h-11 my-auto"
+          className="border-[0.5px] miniTab:border-[1.5px] border-borderColor rounded-lg cursor-pointer h-8 miniTab:h-11 my-auto"
           onClick={handleOpenMenu}
         >
           <HiOutlineUser
-            className="text-textGray border-r-[1.5px] border-borderColor h-auto w-7 miniTab:w-11 px-1 miniTab:px-2.5"
+            className="text-textGray border-r-[0.5px] miniTab:border-r-[1.5px] border-borderColor h-auto w-7 miniTab:w-11 px-1 miniTab:px-2.5"
             size={28}
           />
 
@@ -107,89 +108,81 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
 
   return (
     <Layout>
-      <Header
-        style={{
-          position: "fixed",
-          top: 0,
-          zIndex: 1,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-        className="border-b border-borderColor bg-primaryBackground"
+      <Flex
+        justify="space-between"
+        className="text-center w-full fixed z-[1000] border-b border-borderColor bg-primaryBackground py-3 md:py-4 px-4 md:px-[3.5%]"
       >
-        <Flex justify="space-between" className="text-center w-full">
-          <Flex className="text-center" gap={iconsGap}>
-            <PrimaryLogoWithLabel isHeaderLogo={true} clickable={true} />
-            <span className={iconsSpanClassName}>
-              {headerIconsLeft?.map((item, index) => {
-                const isSelected = pathname === item?.pathname;
-                return (
-                  <IconWithLabel
-                    key={index}
-                    Icon={item?.icon}
-                    label={item?.label}
-                    onClick={item?.onClick}
-                    containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
-                    iconClassName="my-auto font-bold"
-                    labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
-                  />
-                );
-              })}
-            </span>
-          </Flex>
-
-          <span className="flex gap-2 iphoneSE:gap-4 xxs:gap-5 pro:hidden">
-            {allIcons?.map((item, index) => {
+        <Flex className="text-center" gap={iconsGap}>
+          <PrimaryLogoWithLabel isHeaderLogo={true} clickable={true} />
+          <span className={iconsSpanClassName}>
+            {headerIconsLeft?.map((item, index) => {
               const isSelected = pathname === item?.pathname;
-              const hideIsHomeIcon =
-                item?.pathname === routes.home.url && "!hidden";
               return (
                 <IconWithLabel
                   key={index}
                   Icon={item?.icon}
                   label={item?.label}
                   onClick={item?.onClick}
-                  containerClassName={`cursor-pointer hover:text-black ${hideIsHomeIcon} ${isSelected && "text-primary"}`}
+                  containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
                   iconClassName="my-auto font-bold"
                   labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
                 />
               );
             })}
           </span>
+        </Flex>
 
-          <Flex className="text-center" gap={iconsGap}>
-            <span className={iconsSpanClassName}>
-              {headerIconsRight?.map((item, index) => {
-                const isSelected = pathname === item?.pathname;
-                return (
-                  <IconWithLabel
-                    key={index}
-                    Icon={item?.icon}
-                    label={item?.label}
-                    onClick={item?.onClick}
-                    isActionRequired={item?.isActionRequired}
-                    containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
-                    iconClassName="my-auto font-bold"
-                    labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
-                  />
-                );
-              })}
-            </span>
-            <Flex gap={10}>
-              <Button
-                type="secondary"
-                onClick={() => {}}
-                className="my-auto hidden lg:flex"
-              >
-                <span className="font-bold">Open A store</span>
-                <BiStoreAlt className="text-primary" size={13} />
-              </Button>
-              <ProfileDropdown />
-            </Flex>
+        <span className="flex gap-6 xxs:gap-10 pro:xxs:gap-12 miniTab:gap-14 md:hidden">
+          {allIcons?.map((item, index) => {
+            const isSelected = pathname === item?.pathname;
+            const hideIsHomeIcon =
+              item?.pathname === routes.home.url && "!hidden";
+            return (
+              <IconWithLabel
+                key={index}
+                Icon={item?.icon}
+                label={item?.label}
+                onClick={item?.onClick}
+                containerClassName={`cursor-pointer hover:text-black ${hideIsHomeIcon} ${isSelected && "text-primary"}`}
+                iconClassName="my-auto font-bold"
+                labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
+              />
+            );
+          })}
+        </span>
+
+        <Flex className="text-center" gap={iconsGap}>
+          <span className={iconsSpanClassName}>
+            {headerIconsRight?.map((item, index) => {
+              const isSelected = pathname === item?.pathname;
+              return (
+                <IconWithLabel
+                  key={index}
+                  Icon={item?.icon}
+                  label={item?.label}
+                  onClick={item?.onClick}
+                  isActionRequired={item?.isActionRequired}
+                  containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
+                  iconClassName="my-auto font-bold"
+                  labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
+                />
+              );
+            })}
+          </span>
+          <Flex gap={10}>
+            <Button
+              type="secondary"
+              onClick={() => {}}
+              className="my-auto hidden lg:flex"
+            >
+              <span className="font-bold">Open A store</span>
+              <BiStoreAlt className="text-primary" size={13} />
+            </Button>
+            <ProfileDropdown />
           </Flex>
         </Flex>
-      </Header>
+        <SearchPopup isOpen={isOpen} close={close} />
+      </Flex>
     </Layout>
   );
 };

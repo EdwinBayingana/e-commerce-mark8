@@ -39,7 +39,7 @@ const AppLayout: FC<Props> = ({ children }) => {
             open={isOpen}
             onClose={close}
           >
-            <CartContent />
+            <CartContent close={close} />
           </Drawer>
 
           <NavbarComponent handleOpenCartDrawer={open} />
