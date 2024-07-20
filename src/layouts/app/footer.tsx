@@ -12,10 +12,15 @@ const FooterComponent: React.FC = () => {
   const footerSocials = [FaXTwitter, FaInstagram, LiaYoutube, FiLinkedin];
   return (
     <Footer className="text-center bg-primaryBackgroundLight">
-      <Flex justify="space-between">
-        <PrimaryLogoWithLabel />
+      <Flex
+        justify="space-between"
+        className="flex-col miniTab:flex-row gap-5 miniTab:gap-0"
+      >
+        <span className="hidden miniTab:block">
+          <PrimaryLogoWithLabel />
+        </span>
 
-        <Flex gap={9} align="center">
+        <Flex gap={9} align="center" className="self-center miniTab:self-auto">
           <Typography variant="body" className="font-semibold">
             ©{new Date().getFullYear()} Mark8
           </Typography>

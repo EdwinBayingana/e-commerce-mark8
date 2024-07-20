@@ -9,6 +9,8 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { FaRegStar } from "react-icons/fa";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { BiCartDownload } from "react-icons/bi";
+import useAnimateModal from "@utils/hooks/useAnimateModal";
+import CenteredPopup from "@components/shared/modal/CenteredPopup";
 
 interface Props {
   name: string;
@@ -18,6 +20,7 @@ interface Props {
 
 const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
   const unitPriceBefore = 12000;
+  const { handleAddToCart, isAnimating } = useAnimateModal();
 
   return (
     <Flex
@@ -124,10 +127,11 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
               size={16}
             />
           </Flex>
-          <Button type="primary" htmlType="submit" onClick={() => {}}>
+          <Button type="primary" htmlType="submit" onClick={handleAddToCart}>
             <BiCartDownload className="text-secondary" size={14} />
             Add To Cart
           </Button>
+          <CenteredPopup isAnimating={isAnimating} />
         </Flex>
       </Flex>
 

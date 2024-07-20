@@ -73,16 +73,16 @@ export const PrimaryLogoWithLabel: FC<LogoProps> = ({
         vertical
         wrap={false}
         align="center"
-        className={`${!isHeaderLogo && "justify-center"} my-auto`}
+        className={`${!isHeaderLogo && "justify-center"} ${isHeaderLogo && !isProfileMenuAvatar && "miniTab:hidden midTab:block"} my-auto`}
       >
         <AntdTypography
-          className={`${labelClassName} ${isHeaderLogo && "hidden md:flex"}`}
+          className={`${labelClassName} ${isHeaderLogo && !isProfileMenuAvatar && "hidden md:flex"}`}
         >
           {title}
         </AntdTypography>
         {isHeaderLogo || isTopStoreIcon ? (
           <AntdTypography
-            className={`${isHeaderLogo && "hidden md:flex"} self-start text-textGray text-[10px]`}
+            className={`${isHeaderLogo && !isProfileMenuAvatar && "hidden md:flex"} self-start text-textGray text-[10px]`}
           >
             {caption}
           </AntdTypography>

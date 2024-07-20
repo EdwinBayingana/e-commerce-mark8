@@ -15,6 +15,7 @@ import IconWithLabel from "@components/navbar/IconWithLabel";
 import { FC } from "react";
 import routes from "@utils/routes";
 import useRedirection from "@utils/hooks/useRedirection";
+import useScreenSizes from "@utils/hooks/useScreenSizes";
 const { Header } = Layout;
 
 interface NavbarProps {
@@ -23,6 +24,7 @@ interface NavbarProps {
 
 const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
   const { redirectTo, pathname } = useRedirection();
+  const { isMobileSM } = useScreenSizes();
 
   const headerIconsLeft = [
     {
@@ -55,8 +57,10 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
     },
   ];
 
+  const allIcons = [...headerIconsLeft, ...headerIconsRight];
+
   const iconsGap = 35;
-  const iconsSpanClassName = "flex my-auto gap-8";
+  const iconsSpanClassName = `${isMobileSM ? "hidden" : "flex"} my-auto gap-5 md:gap-8`;
 
   const ProfileDropdown = () => {
     const {
@@ -69,7 +73,7 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
         trigger="click"
         showArrow={false}
         content={
-          <Flex className="min-h-[45vh] min-w-[90vw] md:min-w-[50vw] lg:min-w-[35vw] xl:min-w-[20vw] max-w-[30vw] xl:max-w-[20vw] rounded-[7px]">
+          <Flex className="min-h-[50vh] xxs:min-h-[45vh] min-w-[75vw] max-w-[30vw] pro:min-w-[60vw] miniTab:min-w-[40vw] md:min-w-[50vw] lg:min-w-[35vw] xl:min-w-[20vw] xl:max-w-[20vw] rounded-[7px]">
             <ProfileMenuContent />
           </Flex>
         }
@@ -88,11 +92,14 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
           onClick={handleOpenMenu}
         >
           <HiOutlineUser
-            className="text-textGray border-r-[1.5px] border-borderColor h-auto w-11 px-2.5"
+            className="text-textGray border-r-[1.5px] border-borderColor h-auto w-7 miniTab:w-11 px-1 miniTab:px-2.5"
             size={28}
           />
 
-          <GoChevronDown className="text-black my-auto w-7" size={20} />
+          <GoChevronDown
+            className="text-black my-auto w-6 miniTab:w-7"
+            size={20}
+          />
         </Flex>
       </PopoverModal>
     );
@@ -125,12 +132,31 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
                     onClick={item?.onClick}
                     containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
                     iconClassName="my-auto font-bold"
-                    labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
+                    labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
                   />
                 );
               })}
             </span>
           </Flex>
+
+          <span className="flex gap-2 iphoneSE:gap-4 xxs:gap-5 pro:hidden">
+            {allIcons?.map((item, index) => {
+              const isSelected = pathname === item?.pathname;
+              const hideIsHomeIcon =
+                item?.pathname === routes.home.url && "!hidden";
+              return (
+                <IconWithLabel
+                  key={index}
+                  Icon={item?.icon}
+                  label={item?.label}
+                  onClick={item?.onClick}
+                  containerClassName={`cursor-pointer hover:text-black ${hideIsHomeIcon} ${isSelected && "text-primary"}`}
+                  iconClassName="my-auto font-bold"
+                  labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
+                />
+              );
+            })}
+          </span>
 
           <Flex className="text-center" gap={iconsGap}>
             <span className={iconsSpanClassName}>
@@ -145,13 +171,17 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
                     isActionRequired={item?.isActionRequired}
                     containerClassName={`cursor-pointer hover:text-black ${isSelected && "text-primary"}`}
                     iconClassName="my-auto font-bold"
-                    labelClassName={`hidden md:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
+                    labelClassName={`hidden miniTab:block text-[11px]  ${isSelected ? "text-secondary" : "text-textGray"}`}
                   />
                 );
               })}
             </span>
             <Flex gap={10}>
-              <Button type="secondary" onClick={() => {}} className="my-auto">
+              <Button
+                type="secondary"
+                onClick={() => {}}
+                className="my-auto hidden lg:flex"
+              >
                 <span className="font-bold">Open A store</span>
                 <BiStoreAlt className="text-primary" size={13} />
               </Button>
