@@ -6,6 +6,8 @@ export const dummyStores = [
     name: "Awesome Shop 1",
     description: "This is Awesome Shop 1",
     address: "Kigali, Rwanda",
+    categories: ["Vectors", "Backgrounds"],
+    products: [1, 2, 3],
     image: AuthBackgroundImage,
   },
   {
@@ -13,6 +15,8 @@ export const dummyStores = [
     name: "Awesome Shop 2",
     description: "This is Awesome Shop 2",
     address: "Kigali, Rwanda",
+    categories: ["Icons", "Vectors"],
+    products: [2, 3],
     image: AuthBackgroundImage,
   },
   {
@@ -20,6 +24,8 @@ export const dummyStores = [
     name: "Awesome Shop 3",
     description: "This is Awesome Shop 3",
     address: "Kigali, Rwanda",
+    categories: ["Vectors"],
+    products: [1, 3],
     image: AuthBackgroundImage,
   },
   {
@@ -27,6 +33,8 @@ export const dummyStores = [
     name: "Awesome Shop 4",
     description: "This is Awesome Shop 4",
     address: "Kigali, Rwanda",
+    categories: ["Icons"],
+    products: [4, 5],
     image: AuthBackgroundImage,
   },
   {
@@ -34,6 +42,8 @@ export const dummyStores = [
     name: "Awesome Shop 5",
     description: "This is Awesome Shop 5",
     address: "Kigali, Rwanda",
+    categories: ["Backgrounds"],
+    products: [5, 6],
     image: AuthBackgroundImage,
   },
   {
@@ -41,6 +51,8 @@ export const dummyStores = [
     name: "Awesome Shop 6",
     description: "This is Awesome Shop 6",
     address: "Kigali, Rwanda",
+    categories: ["Icons", "Backgrounds"],
+    products: [1, 2, 3, 4, 5, 6],
     image: AuthBackgroundImage,
   },
 ];

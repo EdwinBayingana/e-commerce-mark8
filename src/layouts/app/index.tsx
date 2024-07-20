@@ -4,7 +4,7 @@ import useScreenSizes from "@utils/hooks/useScreenSizes";
 import { Drawer, Layout } from "antd";
 import React, { FC, Fragment } from "react";
 import FooterComponent from "./footer";
-import HeaderComponent from "./header";
+import NavbarComponent from "./navbar";
 
 const { Content } = Layout;
 
@@ -42,7 +42,7 @@ const AppLayout: FC<Props> = ({ children }) => {
             <CartContent />
           </Drawer>
 
-          <HeaderComponent handleOpenCartDrawer={open} />
+          <NavbarComponent handleOpenCartDrawer={open} />
           <Content className="bg-primaryBackground w-full px-[3.5%]">
             {children}
           </Content>

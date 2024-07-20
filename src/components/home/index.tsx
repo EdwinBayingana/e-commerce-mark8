@@ -10,15 +10,13 @@ import { dummyProducts } from "@utils/data/products";
 import TopStores from "./topStores";
 import Button from "@components/shared/button";
 import { FaChevronDown } from "react-icons/fa6";
-import useRedirection from "@utils/hooks/useRedirection";
 
 const HomeContent: FC = () => {
   const slicedProducts = dummyProducts?.slice(0, 6);
-  const { redirectTo } = useRedirection();
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
-      <div className="mt-[25%] md:mt-[4.5%] w-full" />
+      <div className="content-wrapper w-full" />
       <PageHeader />
 
       <Flex justify="space-between" className="my-3">
@@ -31,11 +29,11 @@ const HomeContent: FC = () => {
 
         <Flex align="center" gap={10}>
           <BiFilterAlt
-            className="text-secondary border-[1.5px] border-borderColor h-full w-full p-2.5 rounded-lg"
+            className="text-secondary border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg"
             size={16}
           />
           <LiaSortAlphaDownSolid
-            className="text-secondary border-[1.5px] border-borderColor h-full w-full p-2.5 rounded-lg"
+            className="text-secondary border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg"
             size={16}
           />
         </Flex>
@@ -56,16 +54,7 @@ const HomeContent: FC = () => {
           >
             {slicedProducts.length &&
               slicedProducts?.map((product, index) => (
-                <Col
-                  key={index}
-                  span={6}
-                  xs={24}
-                  sm={12}
-                  md={8}
-                  lg={8}
-                  xl={8}
-                  onClick={() => redirectTo(`/product/${product?.id}`)}
-                >
+                <Col key={index} span={6} xs={24} sm={12} md={8} lg={8} xl={8}>
                   <ProductCard product={product} />
                 </Col>
               ))}
