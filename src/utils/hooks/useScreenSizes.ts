@@ -3,7 +3,7 @@ import { useWindowResize } from "./useWindowResize";
 const useScreenSizes = () => {
   const { width } = useWindowResize();
   const isMobileXS = width <= 250;
-  const isMobileSM = width <= 420;
+  const isMobileSM = width <= 431;
   const isMobile = width <= 640;
   const isTablet = width <= 768;
   const isLaptop = width <= 1024;

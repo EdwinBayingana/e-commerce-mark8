@@ -37,6 +37,8 @@ const config: Config = {
         x: "414px",
         pro: "428px",
         galaxy: "800px",
+        miniTab: "600px",
+        midTab: "900px",
         air: "820px",
         fold: "884px",
         laptop: "1024px",
