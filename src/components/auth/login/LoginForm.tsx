@@ -32,7 +32,10 @@ const LoginForm: React.FC = () => {
   const onSubmit = async (data: { email: string; password: string }) => {
     await login(data).then((res) => {
       if (!res?.error && res?.data?.data?.accessToken) {
-        Cookies.set(TOKEN_NAME, res?.data?.data?.accessToken, { expires: 7 });
+        Cookies.set(TOKEN_NAME, res?.data?.data?.accessToken, {
+          expires: 1 / 48,
+        });
+
         dispatch(setToken(res?.data?.data?.accessToken));
 
         const redirectToString = router.query.redirectTo;
