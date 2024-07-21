@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   user: undefined,
@@ -11,9 +11,13 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.user = undefined;
     },
+    updateUser: (state, action: PayloadAction<any>) => {
+      const { payload } = action;
+      state.user = payload;
+    },
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { updateUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;

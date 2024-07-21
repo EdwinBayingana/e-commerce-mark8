@@ -4,10 +4,12 @@ const initialState: {
   token?: string;
   activeUserId?: number;
   activeUserName?: string;
+  activeUserEmail?: string;
 } = {
   token: undefined,
   activeUserId: undefined,
   activeUserName: undefined,
+  activeUserEmail: undefined,
 };
 
 export const appSlice = createSlice({
@@ -23,6 +25,9 @@ export const appSlice = createSlice({
     },
     setActiveUserName(state, action: PayloadAction<string | undefined>) {
       state.activeUserName = action.payload;
+    },
+    setActiveUserEmail(state, action: PayloadAction<string | undefined>) {
+      state.activeUserEmail = action.payload;
     },
     setActiveUserId(state, action: PayloadAction<number | undefined>) {
       state.activeUserId = action.payload;

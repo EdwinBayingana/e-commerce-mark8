@@ -1,4 +1,4 @@
-`## 🔗 Link to ClickUp
+## 🔗 Link to ClickUp
 
 _Add the link to the ClickUp issue here_
 
