@@ -17,7 +17,7 @@ const typeClasses: Record<string, string> = {
   primary: "border-none focus:border-none focus:ring-primary text-secondary",
   secondary:
     "border-primary focus:border-secondary focus:ring-secondary text-secondary",
-  error: "border-error focus:border-error focus:ring-error",
+  error: "border border-error focus:border-error focus:ring-error",
 };
 
 const sizeClasses: Record<string, string> = {

@@ -16,10 +16,12 @@ interface CustomButtonProps {
   className?: string;
   htmlType?: "button" | "submit" | "reset" | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
 }
 
 const typeClasses: Record<string, string> = {
-  primary: "bg-primary text-secondary border-primary text-xs",
+  primary:
+    "bg-primary text-secondary border-primary text-xs disabled:bg-neutral-500 disabled:border-none",
   secondary:
     "bg-primaryBackground text-secondary border-[1.5px] border-borderColor text-xs",
   danger: "bg-error border-error hover:bg-error-dark text-xs",
@@ -37,6 +39,7 @@ const Button: FC<CustomButtonProps> = ({
   className,
   htmlType,
   onClick,
+  disabled,
   ...props
 }) => {
   const classes = classNames(className, typeClasses[type], sizeClasses[size]);
@@ -46,6 +49,7 @@ const Button: FC<CustomButtonProps> = ({
       className={`${classes} rounded-lg font-semibold`}
       htmlType={htmlType}
       onClick={onClick}
+      disabled={disabled}
       {...props}
     >
       {children}
