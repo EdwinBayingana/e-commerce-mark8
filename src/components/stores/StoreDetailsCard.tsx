@@ -9,17 +9,18 @@ import { FaRegStar } from "react-icons/fa";
 import { BiStoreAlt } from "react-icons/bi";
 import { HiOutlineUser } from "react-icons/hi";
 import StoreProductCard from "@components/shared/cards/StoreProductCard";
-import { dummyProducts } from "@utils/data/products";
 
 interface Props {
-  name?: string;
-  description?: string;
+  store: {
+    name?: string;
+    address?: string;
+    description?: string;
+    image?: string;
+  };
+  storeProducts: any[];
 }
 
-const StoreDetailsComponent: FC<Props> = ({
-  name = "Awesome Shop 1",
-  description = "Description #1 for Awesome Shop 1 Description #1 for Awesome Shop 1 Description #1 for Awesome Shop 1 Description #1 for Awesome Shop 1",
-}) => {
+const StoreDetailsComponent: FC<Props> = ({ store, storeProducts }) => {
   const options = ["All", "Vectors", "Icons", "Backgrounds"];
 
   return (
@@ -36,13 +37,13 @@ const StoreDetailsComponent: FC<Props> = ({
       >
         <span className="flex self-start md:self-auto gap-3">
           <Image
-            src={AuthBackgroundImage}
-            alt={name}
+            src={store?.image || AuthBackgroundImage}
+            alt={store?.name || "Store Logo"}
             className="w-12 h-12 object-fill rounded-xl"
           />
           <Flex vertical gap={2} align="center" justify="center">
             <Typography variant="body" className="font-bold">
-              {name}
+              {store?.name}
             </Typography>
             <Typography variant="caption" className="!text-[9.5px] self-start">
               134 Products
@@ -84,7 +85,7 @@ const StoreDetailsComponent: FC<Props> = ({
                 variant="caption"
                 className="max-h-[40vh] md:max-h-[20vh] overflow-y-auto scrollbar-hide"
               >
-                {description || ""}
+                {store?.description || ""}
               </Typography>
             </Flex>
 
@@ -146,9 +147,9 @@ const StoreDetailsComponent: FC<Props> = ({
             gap={15}
             className="md:max-w-[53%] overflow-x-auto scrollbar-hide"
           >
-            {dummyProducts.length &&
-              dummyProducts
-                ?.slice(0, 6)
+            {storeProducts?.length &&
+              storeProducts
+                ?.slice(0, 5)
                 ?.map((product, index) => (
                   <StoreProductCard key={index} product={product} />
                 ))}
