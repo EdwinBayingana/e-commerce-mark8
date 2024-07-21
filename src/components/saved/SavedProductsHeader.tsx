@@ -2,7 +2,11 @@ import React, { FC } from "react";
 import { Flex } from "antd";
 import Typography from "@components/shared/typography";
 
-const SavedProductsHeader: FC = () => {
+interface Props {
+  isEmpty?: boolean;
+}
+
+const SavedProductsHeader: FC<Props> = ({ isEmpty }) => {
   return (
     <Flex
       align="center"
@@ -11,9 +15,12 @@ const SavedProductsHeader: FC = () => {
       gap={5}
     >
       <Typography variant="subTitle" className="text-secondary">
-        Saved Products
+        {`${isEmpty ? "No" : ""} Saved Products`}
       </Typography>
-      <Typography variant="caption" className="text-secondary">
+      <Typography
+        variant="caption"
+        className={`text-secondary ${isEmpty && "hidden"}`}
+      >
         5 saved
       </Typography>
     </Flex>

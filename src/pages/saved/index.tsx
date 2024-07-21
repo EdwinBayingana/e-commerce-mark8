@@ -12,7 +12,7 @@ const SavedProducts: NextPageWithLayout = () => {
   return (
     <Fragment>
       <Head>
-        <title>View Product | Mark8</title>
+        <title>Saved Products | Mark8</title>
       </Head>
 
       <SavedProductsContent />
