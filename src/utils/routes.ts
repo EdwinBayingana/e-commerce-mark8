@@ -29,14 +29,8 @@ const routes = {
     url: "/stores",
     name: "stores",
   },
-  setCookie: {
-    url: "/api/setCookie",
-  },
   serverLogin: {
-    url: "/api/login",
-  },
-  serverLogout: {
-    url: "/api/logout",
+    url: "/auth/login",
   },
 };
 

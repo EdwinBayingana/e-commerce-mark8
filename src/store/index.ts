@@ -5,8 +5,6 @@ import {
   configureStore,
   isRejectedWithValue,
 } from "@reduxjs/toolkit";
-import routes from "@utils/routes";
-import axios from "axios";
 import {
   FLUSH,
   PAUSE,
@@ -52,12 +50,14 @@ const rtkQueryErrorLogger: Middleware =
     const typedAction = action as { payload?: Payload };
 
     if (typedAction?.payload?.status === 401) {
-      axios.post(routes.serverLogout.url).then(() => {
-        api.dispatch(logout());
-        api.dispatch(baseAPI.util.resetApiState());
-        api.dispatch(clearToken());
-        window.location.href =
-          routes.login.url + `?redirectTo=${window.location.pathname}`;
+      api.dispatch(logout());
+      api.dispatch(clearToken());
+      notification.open({
+        type: "error",
+        message:
+          typedAction.payload?.data?.message ||
+          "Sorry, something went wrong...",
+        key: "global_error_msg",
       });
       return next(action);
     } else {
@@ -69,7 +69,8 @@ const rtkQueryErrorLogger: Middleware =
           notification.open({
             type: "error",
             message:
-              typedAction.payload?.data?.message || "Oops something went wrong",
+              typedAction.payload?.data?.message ||
+              "Sorry, something went wrong...",
             key: "global_error_msg",
           });
         }
