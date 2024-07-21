@@ -15,11 +15,13 @@ import Cookies from "js-cookie";
 import { TOKEN_NAME } from "@utils/constants";
 import { setToken } from "@store/reducers/app";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
   const { redirectTo } = useRedirection();
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const {
     control,
@@ -32,7 +34,14 @@ const LoginForm: React.FC = () => {
       if (!res?.error && res?.data?.data?.accessToken) {
         Cookies.set(TOKEN_NAME, res?.data?.data?.accessToken, { expires: 7 });
         dispatch(setToken(res?.data?.data?.accessToken));
-        redirectTo(routes.home.url);
+
+        const redirectToString = router.query.redirectTo;
+        if (redirectToString) {
+          router.replace(redirectToString as string);
+        } else {
+          router.replace(routes.home.url);
+        }
+
         notification.success({
           message: "Login successful!",
         });
