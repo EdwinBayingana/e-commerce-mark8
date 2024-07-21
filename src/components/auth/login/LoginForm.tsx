@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Form } from "antd";
+import { Flex, Form, notification, Spin } from "antd";
 import Input from "@components/shared/input";
 import Button from "@components/shared/button";
 import { BiLogInCircle } from "react-icons/bi";
@@ -8,14 +8,40 @@ import { HiOutlineLockClosed } from "react-icons/hi";
 import Typography from "@components/shared/typography";
 import routes from "@utils/routes";
 import useRedirection from "@utils/hooks/useRedirection";
+import { useForm, Controller } from "react-hook-form";
+import { useLoginMutation } from "@store/actions/auth";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const LoginForm: React.FC = () => {
   const { redirectTo } = useRedirection();
+  const [login, { isLoading }] = useLoginMutation();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<{ email: string; password: string }>();
+
+  const onSubmit = async (data: { email: string; password: string }) => {
+    await login(data).then((res) => {
+      if (!res?.error) {
+        redirectTo(routes.home.url);
+        notification.success({
+          message: "Login successful!",
+        });
+      }
+    });
+  };
+
   const formLabelClassName = "text-[9.5px] text-secondary mb-0.5 font-semibold";
   const inputIconSize = 17;
 
   return (
-    <Form layout="vertical" className="h-full">
+    <Form
+      layout="vertical"
+      onFinish={handleSubmit(onSubmit)}
+      className="h-full"
+    >
       <Flex vertical justify="space-between" className="h-full gap-4">
         <Typography variant="subTitle" className="self-center md:self-auto">
           Login
@@ -24,38 +50,68 @@ const LoginForm: React.FC = () => {
         <Flex vertical className="gap-4">
           <Form.Item
             name="email"
-            rules={[{ message: "Please input the Email!" }]}
             className="my-auto"
+            validateStatus={errors.email ? "error" : ""}
           >
             <Typography variant="body" className={formLabelClassName}>
               Email
             </Typography>
-            <Input
-              addonBefore={
-                <CgMail className="text-primary" size={inputIconSize} />
-              }
-              placeholder="Enter email"
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Please input the Email!",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Please enter a valid email address!",
+                },
+              }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  addonBefore={
+                    <CgMail className="text-primary" size={inputIconSize} />
+                  }
+                  placeholder="Enter email"
+                />
+              )}
             />
+            {errors.email && (
+              <span className="error-message">{errors.email.message}</span>
+            )}
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ message: "Please input the Password!" }]}
             className="my-auto"
+            validateStatus={errors.password ? "error" : ""}
           >
             <Typography variant="body" className={formLabelClassName}>
               Password
             </Typography>
-            <Input
-              type="primary"
-              inputType="password"
-              addonBefore={
-                <HiOutlineLockClosed
-                  className="text-primary"
-                  size={inputIconSize}
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              rules={{ required: "Please input the Password!" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  type="primary"
+                  inputType="password"
+                  addonBefore={
+                    <HiOutlineLockClosed
+                      className="text-primary"
+                      size={inputIconSize}
+                    />
+                  }
+                  placeholder="Enter password"
                 />
-              }
-              placeholder="Enter password"
+              )}
             />
+            {errors.password && (
+              <span className="error-message">{errors.password.message}</span>
+            )}
           </Form.Item>
         </Flex>
 
@@ -73,11 +129,20 @@ const LoginForm: React.FC = () => {
             <Button
               type="primary"
               htmlType="submit"
-              onClick={() => redirectTo(routes.home.url)}
               className="w-full"
+              disabled={isLoading}
             >
               Login
-              <BiLogInCircle className="text-secondary" size={15} />
+              {isLoading ? (
+                <Spin
+                  spinning={isLoading}
+                  indicator={
+                    <LoadingOutlined spin className="text-secondary" />
+                  }
+                ></Spin>
+              ) : (
+                <BiLogInCircle className="text-secondary" size={15} />
+              )}
             </Button>
           </Form.Item>
 

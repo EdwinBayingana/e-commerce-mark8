@@ -2,12 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: {
   token?: string;
-  activeUserId?: number;
   activeUserName?: string;
   activeUserEmail?: string;
 } = {
   token: undefined,
-  activeUserId: undefined,
   activeUserName: undefined,
   activeUserEmail: undefined,
 };
@@ -29,13 +27,10 @@ export const appSlice = createSlice({
     setActiveUserEmail(state, action: PayloadAction<string | undefined>) {
       state.activeUserEmail = action.payload;
     },
-    setActiveUserId(state, action: PayloadAction<number | undefined>) {
-      state.activeUserId = action.payload;
-    },
   },
 });
 
-export const { setToken, clearToken, setActiveUserId, setActiveUserName } =
+export const { setToken, clearToken, setActiveUserEmail, setActiveUserName } =
   appSlice.actions;
 
 export default appSlice.reducer;

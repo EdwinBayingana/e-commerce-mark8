@@ -1,8 +1,8 @@
 import { GenericResponse } from "./global";
 
 export type AuthResponse = GenericResponse<{
-  statusCode: number;
-  message: string;
+  statusCode?: number;
+  message?: string;
   data: {
     accessToken: string;
     refreshToken: string;
@@ -10,7 +10,7 @@ export type AuthResponse = GenericResponse<{
 }>;
 
 export type LoginPayload = {
-  username: string;
+  email: string;
   password: string;
 };
 
