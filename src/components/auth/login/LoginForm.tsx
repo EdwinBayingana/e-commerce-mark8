@@ -11,10 +11,15 @@ import useRedirection from "@utils/hooks/useRedirection";
 import { useForm, Controller } from "react-hook-form";
 import { useLoginMutation } from "@store/actions/auth";
 import { LoadingOutlined } from "@ant-design/icons";
+import Cookies from "js-cookie";
+import { TOKEN_NAME } from "@utils/constants";
+import { setToken } from "@store/reducers/app";
+import { useDispatch } from "react-redux";
 
 const LoginForm: React.FC = () => {
   const { redirectTo } = useRedirection();
   const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
 
   const {
     control,
@@ -24,7 +29,9 @@ const LoginForm: React.FC = () => {
 
   const onSubmit = async (data: { email: string; password: string }) => {
     await login(data).then((res) => {
-      if (!res?.error) {
+      if (!res?.error && res?.data?.data?.accessToken) {
+        Cookies.set(TOKEN_NAME, res?.data?.data?.accessToken, { expires: 7 });
+        dispatch(setToken(res?.data?.data?.accessToken));
         redirectTo(routes.home.url);
         notification.success({
           message: "Login successful!",

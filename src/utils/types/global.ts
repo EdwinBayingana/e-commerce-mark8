@@ -8,7 +8,7 @@ export type IPagination = {
 
 export type GenericResponse<T> = {
   [x: string]: any;
-  statusCode: number;
+  status: number;
   message: string;
   data: T;
   error?: {

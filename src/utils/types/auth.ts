@@ -7,6 +7,8 @@ export type AuthResponse = GenericResponse<{
     accessToken: string;
     refreshToken: string;
   };
+  accessToken?: string;
+  refreshToken?: string;
 }>;
 
 export type LoginPayload = {

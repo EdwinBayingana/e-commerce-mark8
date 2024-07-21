@@ -13,7 +13,7 @@ const ProductDetails: NextPageWithLayout = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const productId = id ? parseInt(id as string, 10) : null;
+  const productId = id as string;
 
   if (router.isFallback) {
     return <div>Loading...</div>;

@@ -108,7 +108,11 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
           </Flex>
         </Flex>
 
-        <Flex gap={15} justify="space-between" className="flex-col x:flex-row">
+        <Flex
+          gap={15}
+          justify="space-between"
+          className="flex-col midTab:flex-row"
+        >
           <Flex gap={5} align="center" justify="center" className="h-11">
             <FiMinus
               className="text-secondary border-[1.5px] border-borderColor w-full max-w-10  h-full p-2.5 rounded-lg cursor-pointer"
@@ -140,7 +144,7 @@ const ProductDetailsComponent: FC<Props> = ({ name, description, price }) => {
         className="px-6 py-3 flex-col pro:flex-row pro:items-center"
         gap={15}
       >
-        <span className="flex gap-3 flex-col md:flex-row">
+        <span className="flex gap-3 flex-col midTab:flex-row">
           <Typography variant="body" className="font-bold my-auto">
             Store Info:
           </Typography>
