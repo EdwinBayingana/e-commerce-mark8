@@ -1,23 +1,41 @@
 import ProductCard from "@components/shared/cards/ProductCard";
 import Typography from "@components/shared/typography";
-import { dummyProducts } from "@utils/data/products";
 import useRedirection from "@utils/hooks/useRedirection";
 import routes from "@utils/routes";
-import { Breadcrumb, Col, Flex, Row } from "antd";
-import React, { FC } from "react";
+import { Breadcrumb, Col, Flex, Row, Spin } from "antd";
+import React, { FC, useEffect, useState } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import ImageCarouselComponent from "./ImageCarousel";
 import OpenStoreHeader from "../shared/OpenStoreHeader";
 import ProductDetailsComponent from "./ProductDetails";
+import {
+  useGetProductQuery,
+  useGetProductsQuery,
+} from "@store/actions/product";
+import { LoadingOutlined } from "@ant-design/icons";
 
 interface Props {
-  productId: number | null;
+  productId: string;
 }
 
 const ProductDetailsContent: FC<Props> = ({ productId }) => {
   const { redirectTo } = useRedirection();
-  const slicedProducts = dummyProducts?.slice(0, 4);
-  const product = dummyProducts?.find((product) => product?.id === productId);
+  const [product, setProduct] = useState<any>();
+
+  const { data, isLoading, isFetching } = useGetProductQuery({
+    productId: productId,
+  });
+  const { data: suggestedProducts, isLoading: isLoadingSuggestedProducts } =
+    useGetProductsQuery({});
+
+  useEffect(() => {
+    setProduct(data?.data);
+  }, [data]);
+
+  const reducedSuggestedProducts = suggestedProducts?.data?.products?.slice(
+    0,
+    4,
+  );
 
   const breadcrumbItems = [
     {
@@ -56,7 +74,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
         <ImageCarouselComponent
           key={product?.id}
           productName={product?.name}
-          productImages={product?.images || []}
+          productImages={product?.thumbnail || []}
         />
         <ProductDetailsComponent
           name={product?.name || ""}
@@ -70,8 +88,8 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
           You may also like
         </Typography>
         <Row gutter={[16, 16]}>
-          {slicedProducts.length &&
-            slicedProducts?.map((product, index) => (
+          {reducedSuggestedProducts?.length &&
+            reducedSuggestedProducts?.map((product, index) => (
               <Col key={index} span={6} xs={24} sm={12} md={8} lg={6} xl={6}>
                 <ProductCard product={product} />
               </Col>
@@ -80,6 +98,11 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
 
         <OpenStoreHeader />
       </Flex>
+      <Spin
+        spinning={isLoading || isFetching || isLoadingSuggestedProducts}
+        indicator={<LoadingOutlined spin className="text-primary" />}
+        fullscreen={true}
+      />
     </Flex>
   );
 };
