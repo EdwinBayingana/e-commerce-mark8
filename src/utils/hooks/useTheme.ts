@@ -9,10 +9,6 @@ const initialState = {
   currentTheme: "system",
 } as ThemeState;
 
-// const initialState = {
-//   currentTheme: 'system',
-// } satisfies ThemeState;
-
 export const useTheme = createSlice({
   name: "theme",
   initialState,

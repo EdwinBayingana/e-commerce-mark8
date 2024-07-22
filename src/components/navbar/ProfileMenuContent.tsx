@@ -35,6 +35,7 @@ const ProfileMenuContent: React.FC = () => {
         Cookies.remove(TOKEN_NAME);
         clearToken();
         dispatch(setToken(undefined));
+        window.location.reload();
       },
     },
   ];
