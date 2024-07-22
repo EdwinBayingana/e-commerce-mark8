@@ -9,8 +9,9 @@ import useRedirection from "@utils/hooks/useRedirection";
 import CenteredPopup from "../modal/CenteredPopup";
 import useAnimateModal from "@utils/hooks/useAnimateModal";
 import { motion } from "framer-motion";
+import { Product } from "@utils/types/product";
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   const { redirectTo } = useRedirection();
   const { handleAddToCart, isAnimating } = useAnimateModal();
 

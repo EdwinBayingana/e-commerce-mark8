@@ -13,6 +13,7 @@ import {
   useGetProductsQuery,
 } from "@store/actions/product";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Product } from "@utils/types/product";
 
 interface Props {
   productId: string;
@@ -20,7 +21,7 @@ interface Props {
 
 const ProductDetailsContent: FC<Props> = ({ productId }) => {
   const { redirectTo } = useRedirection();
-  const [product, setProduct] = useState<any>();
+  const [product, setProduct] = useState<Product>();
 
   const { data, isLoading, isFetching } = useGetProductQuery({
     productId: productId,
@@ -29,7 +30,26 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
     useGetProductsQuery({});
 
   useEffect(() => {
-    setProduct(data?.data);
+    if (data?.data) {
+      const fetchedProduct: Product = {
+        id: data.data.id,
+        name: data.data.name,
+        description: data.data.description,
+        unitPrice: data.data.unitPrice,
+        category: data.data.category,
+        thumbnail: data.data.thumbnail,
+        code: "",
+        createdAt: "",
+        updatedAt: "",
+        store: {
+          createdCategories: [],
+          updatedCategories: [],
+        },
+        inventories: [],
+        reviews: [],
+      };
+      setProduct(fetchedProduct);
+    }
   }, [data]);
 
   const reducedSuggestedProducts = suggestedProducts?.data?.products
@@ -75,7 +95,7 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
       <Flex gap={20} className="flex-col md:flex-row">
         <ImageCarouselComponent
           key={product?.id}
-          productName={product?.name}
+          productName={product?.name || ""}
           productImages={product?.thumbnail || []}
         />
         <ProductDetailsComponent

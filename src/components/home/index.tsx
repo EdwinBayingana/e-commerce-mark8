@@ -8,17 +8,19 @@ import { LiaSortAlphaDownSolid } from "react-icons/lia";
 import ProductCard from "@components/shared/cards/ProductCard";
 import TopStores from "./topStores";
 import Button from "@components/shared/button";
-import { FaChevronDown } from "react-icons/fa6";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { useGetProductsQuery } from "@store/actions/product";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetStoresQuery } from "@store/actions/store";
+import { Product } from "@utils/types/product";
 
 const HomeContent: FC = () => {
   const { data, isLoading, isFetching } = useGetProductsQuery({});
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
-  const [selectedProducts, setSelectedProducts] = useState<any>(data);
+  const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const {
     data: fetchedCategories,
@@ -30,6 +32,24 @@ const HomeContent: FC = () => {
     {},
   );
 
+  useEffect(() => {
+    if (data) {
+      setAllProducts(data.data.products);
+      setDisplayedProducts(data.data.products.slice(0, 6));
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (!selectedCategories.length) {
+      setDisplayedProducts(allProducts.slice(0, 6));
+    } else {
+      const filteredProducts = allProducts.filter((product) =>
+        selectedCategories.includes(product.category.id),
+      );
+      setDisplayedProducts(filteredProducts.slice(0, 6));
+    }
+  }, [allProducts, selectedCategories]);
+
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategories((prevSelected) =>
       prevSelected.includes(categoryId)
@@ -38,33 +58,32 @@ const HomeContent: FC = () => {
     );
   };
 
-  useEffect(() => {
-    if (!selectedCategories.length) {
-      setSelectedProducts(data?.data?.products);
+  const handleLoadMore = () => {
+    if (showAll) {
+      setDisplayedProducts(allProducts.slice(0, 6));
+      setShowAll(false);
     } else {
-      setSelectedProducts(
-        data?.data?.products?.filter((product) =>
-          selectedCategories.includes(product.category.id),
-        ),
-      );
+      setDisplayedProducts(allProducts);
+      setShowAll(true);
     }
-  }, [data, selectedCategories]);
+  };
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
       <div className="content-wrapper w-full" />
       <PageHeader
-        fetchedCategories={fetchedCategories?.data?.categories}
+        fetchedCategories={fetchedCategories?.data?.categories || []}
         isLoading={isLoadingCategories || isFetchingCategories}
         selectedCategories={selectedCategories}
         handleCategorySelect={handleCategorySelect}
+        allItemsLength={data?.data?.products?.length || 0}
       />
 
       <Flex justify="space-between" className="my-3">
         <Flex align="center" gap={10}>
           <RiShoppingBag3Line size={19} className="text-primary" />
           <Typography variant="body" className="font-bold">
-            Recent Products ({selectedProducts?.length})
+            Recent Products ({displayedProducts?.length})
           </Typography>
         </Flex>
 
@@ -83,9 +102,9 @@ const HomeContent: FC = () => {
       <Flex
         vertical
         justify="space-between"
-        className={`w-full mt-5 mb-8 flex-col lg:flex-row ${!selectedProducts?.length && "h-[50vh]"}`}
+        className={`w-full mt-5 mb-8 flex-col lg:flex-row ${isLoading && "h-[50vh]"}`}
       >
-        <span className="flex flex-col w-full">
+        <Flex vertical className="w-full h-full">
           <Row
             gutter={[
               { xs: 4, sm: 8, md: 12, lg: 16 },
@@ -93,24 +112,35 @@ const HomeContent: FC = () => {
             ]}
             className="lg:w-full"
           >
-            {selectedProducts?.length &&
-              selectedProducts?.map((product: any, index: number) => (
+            {displayedProducts?.length &&
+              displayedProducts?.map((product: Product, index: number) => (
                 <Col key={index} span={8} xs={24} sm={12} md={8} lg={12} xl={8}>
                   <ProductCard product={product} />
                 </Col>
               ))}
           </Row>
-          <Button
-            type="secondary"
-            onClick={() => {}}
-            className={`m-auto my-3 ${!selectedProducts?.length && "hidden"}`}
-          >
-            <FaChevronDown className="text-primary" size={12} />
-            <span className="font-bold">Load More</span>
-          </Button>
-        </span>
+          {allProducts.length > 3 && (
+            <Button
+              type="secondary"
+              onClick={handleLoadMore}
+              className="flex m-auto my-3"
+            >
+              {showAll ? (
+                <Flex gap={10} align="center">
+                  <FaChevronUp className="text-primary" size={12} />
+                  <span className="font-bold flex">See Less</span>
+                </Flex>
+              ) : (
+                <Flex gap={10} align="center">
+                  <FaChevronDown className="text-primary" size={12} />
+                  <span className="font-bold">Load More</span>
+                </Flex>
+              )}
+            </Button>
+          )}
+        </Flex>
 
-        <TopStores stores={fetchedStores?.data?.stores} />
+        <TopStores stores={fetchedStores?.data?.stores || []} />
       </Flex>
 
       <Spin

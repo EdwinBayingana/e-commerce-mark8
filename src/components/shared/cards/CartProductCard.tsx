@@ -3,8 +3,18 @@ import React, { FC } from "react";
 import Typography from "../typography";
 import { AuthBackgroundImage } from "@utils/images";
 import { FiTrash, FiMinus, FiPlus } from "react-icons/fi";
+import { Product } from "@utils/types/product";
+import useRedirection from "@utils/hooks/useRedirection";
 
-const CartProductCard: FC<any> = ({ product, index }) => {
+interface Props {
+  product: Product;
+  index: number;
+  onClose: () => void;
+}
+
+const CartProductCard: FC<Props> = ({ product, index, onClose }) => {
+  const { redirectTo } = useRedirection();
+
   return (
     <Flex
       justify="space-between"
@@ -17,10 +27,16 @@ const CartProductCard: FC<any> = ({ product, index }) => {
           {index + 1}
         </Typography>
         <Image
-          src={product?.thumbnail || AuthBackgroundImage}
+          src={
+            (product?.thumbnail[0] as unknown as string) || AuthBackgroundImage
+          }
           alt={`${product?.name || "Awesomity logo"}`}
           className="h-12 w-12 object-fill cursor-pointer rounded-md"
           preview={false}
+          onClick={() => {
+            onClose();
+            redirectTo(`/product/${product?.id}`);
+          }}
         />
         <span className="flex flex-col gap-1 max-w-28">
           <Typography variant="body" className="font-bold line-clamp-1">
@@ -47,7 +63,7 @@ const CartProductCard: FC<any> = ({ product, index }) => {
               variant="body"
               className="font-bold md:px-10 bg-secondaryBackground rounded-lg p-3 whitespace-nowrap"
             >
-              {product?.quantity}
+              2
             </Typography>
           </span>
           <FiPlus

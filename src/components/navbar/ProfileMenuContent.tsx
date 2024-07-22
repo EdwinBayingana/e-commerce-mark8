@@ -8,15 +8,12 @@ import { IoMdLogOut } from "react-icons/io";
 import IconWithLabel from "./IconWithLabel";
 import { PrimaryLogoWithLabel } from "@components/logo";
 import { AuthBackgroundImage } from "@utils/images";
-import useRedirection from "@utils/hooks/useRedirection";
-import routes from "@utils/routes";
 import { useDispatch } from "react-redux";
 import { clearToken, setToken } from "@store/reducers/app";
 import Cookies from "js-cookie";
 import { TOKEN_NAME } from "@utils/constants";
 
 const ProfileMenuContent: React.FC = () => {
-  const { redirectTo } = useRedirection();
   const dispatch = useDispatch();
 
   const icons = [
@@ -38,7 +35,6 @@ const ProfileMenuContent: React.FC = () => {
         Cookies.remove(TOKEN_NAME);
         clearToken();
         dispatch(setToken(undefined));
-        redirectTo(routes.login.url);
       },
     },
   ];

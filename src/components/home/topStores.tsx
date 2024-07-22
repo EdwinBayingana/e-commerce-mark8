@@ -7,9 +7,10 @@ import { FiSearch } from "react-icons/fi";
 import { RxMixerVertical } from "react-icons/rx";
 import { TbExternalLink } from "react-icons/tb";
 import { GoChevronRight } from "react-icons/go";
+import { Store } from "@utils/types/store";
 
 interface Props {
-  stores: any;
+  stores: Store[];
 }
 
 const TopStores: FC<Props> = ({ stores }) => {
@@ -17,7 +18,7 @@ const TopStores: FC<Props> = ({ stores }) => {
     <Flex
       vertical
       justify="normal"
-      className={`mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border ${!stores?.length && "h-[50vh]"}`}
+      className={`mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border h-full ${!stores?.length && "h-[50vh]"}`}
     >
       <Flex justify="space-between" className="m-4">
         <Flex align="center" gap={10}>
@@ -50,7 +51,7 @@ const TopStores: FC<Props> = ({ stores }) => {
       </span>
 
       {stores?.length &&
-        stores?.slice(0, 7)?.map((store: any, index: number) => (
+        stores?.slice(0, 7)?.map((store, index) => (
           <Flex key={index} justify="space-between" className="my-2 mx-4">
             <PrimaryLogoWithLabel
               gap={15}

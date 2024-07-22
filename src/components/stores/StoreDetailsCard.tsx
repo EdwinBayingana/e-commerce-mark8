@@ -9,6 +9,8 @@ import { FaRegStar } from "react-icons/fa";
 import { BiStoreAlt } from "react-icons/bi";
 import { HiOutlineUser } from "react-icons/hi";
 import StoreProductCard from "@components/shared/cards/StoreProductCard";
+import { Category } from "@utils/types/category";
+import { Product } from "@utils/types/product";
 
 interface Props {
   store: {
@@ -17,8 +19,8 @@ interface Props {
     description?: string;
     image?: string;
   };
-  storeCategories: any;
-  storeProducts: any[];
+  storeCategories: Category[];
+  storeProducts: Product[];
 }
 
 const StoreDetailsComponent: FC<Props> = ({
@@ -102,7 +104,7 @@ const StoreDetailsComponent: FC<Props> = ({
                 className="scrollbar-hide w-full md:w-[95%]  overflow-x-auto py-0.5"
               >
                 {storeCategories?.length &&
-                  storeCategories?.map((category: any, index: number) => (
+                  storeCategories?.map((category, index) => (
                     <button key={index}>
                       <Typography
                         variant="body"

@@ -7,50 +7,31 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get(TOKEN_NAME);
   const isTokenValid = token && token.value !== "undefined";
 
-  if (req.nextUrl.pathname.startsWith("/")) {
-    if (isTokenValid) {
-      return NextResponse.next();
-    } else {
-      return NextResponse.redirect(
-        new URL(
-          `${routes.login.url}?redirectTo=${req.nextUrl.pathname}`,
-          req.url,
-        ),
-      );
-    }
+  const redirectToLogin = () => {
+    return NextResponse.redirect(
+      new URL(
+        `${routes.login.url}?redirectTo=${req.nextUrl.pathname}`,
+        req.url,
+      ),
+    );
+  };
+
+  const allowAccess = () => {
+    return NextResponse.next();
+  };
+
+  const protectedRoutes = ["/saved", "/product", "/stores"];
+  const authRoutes = [routes.login.url, routes.signup.url];
+
+  if (protectedRoutes.some((path) => req.nextUrl.pathname.startsWith(path))) {
+    return isTokenValid ? allowAccess() : redirectToLogin();
   }
 
-  if (req.nextUrl.pathname.startsWith("/saved")) {
-    if (isTokenValid) {
-      return NextResponse.next();
-    } else {
-      return NextResponse.redirect(
-        new URL(
-          `${routes.login.url}?redirectTo=${req.nextUrl.pathname}`,
-          req.url,
-        ),
-      );
-    }
+  if (authRoutes.includes(req.nextUrl.pathname)) {
+    return isTokenValid
+      ? NextResponse.redirect(new URL(routes.home.url, req.url))
+      : allowAccess();
   }
 
-  if (req.nextUrl.pathname.startsWith("/stores")) {
-    if (isTokenValid) {
-      return NextResponse.next();
-    } else {
-      return NextResponse.redirect(
-        new URL(
-          `${routes.login.url}?redirectTo=${req.nextUrl.pathname}`,
-          req.url,
-        ),
-      );
-    }
-  }
-
-  if ([routes.login.url, routes.signup.url].includes(req.nextUrl.pathname)) {
-    if (isTokenValid) {
-      return NextResponse.redirect(new URL(routes.home.url, req.url));
-    } else {
-      return NextResponse.next();
-    }
-  }
+  return allowAccess();
 }
