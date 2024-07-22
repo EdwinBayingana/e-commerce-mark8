@@ -12,6 +12,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { useGetProductsQuery } from "@store/actions/product";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useGetCategoriesQuery } from "@store/actions/category";
+import { useGetStoresQuery } from "@store/actions/store";
 
 const HomeContent: FC = () => {
   const [fetchedData, setFetchedData] = useState<any>();
@@ -21,6 +22,9 @@ const HomeContent: FC = () => {
     isLoading: isLoadingCategories,
     isFetching: isFetchingCategories,
   } = useGetCategoriesQuery({});
+  const { data: fetchedStores, isLoading: isLoadingStores } = useGetStoresQuery(
+    {},
+  );
 
   useEffect(() => {
     setFetchedData(data);
@@ -94,11 +98,11 @@ const HomeContent: FC = () => {
           </Button>
         </span>
 
-        <TopStores />
+        <TopStores stores={fetchedStores?.data?.stores} />
       </Flex>
 
       <Spin
-        spinning={isLoading || isFetching}
+        spinning={isLoading || isFetching || isLoadingStores}
         indicator={<LoadingOutlined spin className="text-primary" />}
         fullscreen={true}
       />
