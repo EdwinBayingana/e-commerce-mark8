@@ -7,6 +7,19 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get(TOKEN_NAME);
   const isTokenValid = token && token.value !== "undefined";
 
+  if (req.nextUrl.pathname.startsWith("/")) {
+    if (isTokenValid) {
+      return NextResponse.next();
+    } else {
+      return NextResponse.redirect(
+        new URL(
+          `${routes.login.url}?redirectTo=${req.nextUrl.pathname}`,
+          req.url,
+        ),
+      );
+    }
+  }
+
   if (req.nextUrl.pathname.startsWith("/saved")) {
     if (isTokenValid) {
       return NextResponse.next();
