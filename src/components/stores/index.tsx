@@ -37,6 +37,7 @@ const StoreContent: FC = () => {
         isStoreHeader={true}
         fetchedCategories={fetchedCategories?.data?.categories}
         isLoading={isLoadingCategories || isFetchingCategories}
+        handleCategorySelect={() => {}}
       />
 
       <Flex vertical gap={15}>

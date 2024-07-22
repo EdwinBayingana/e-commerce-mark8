@@ -15,20 +15,40 @@ import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetStoresQuery } from "@store/actions/store";
 
 const HomeContent: FC = () => {
-  const [fetchedData, setFetchedData] = useState<any>();
   const { data, isLoading, isFetching } = useGetProductsQuery({});
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const [selectedProducts, setSelectedProducts] = useState<any>(data);
+
   const {
     data: fetchedCategories,
     isLoading: isLoadingCategories,
     isFetching: isFetchingCategories,
   } = useGetCategoriesQuery({});
+
   const { data: fetchedStores, isLoading: isLoadingStores } = useGetStoresQuery(
     {},
   );
 
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategories((prevSelected) =>
+      prevSelected.includes(categoryId)
+        ? prevSelected.filter((id) => id !== categoryId)
+        : [...prevSelected, categoryId],
+    );
+  };
+
   useEffect(() => {
-    setFetchedData(data);
-  }, [data]);
+    if (!selectedCategories.length) {
+      setSelectedProducts(data?.data?.products);
+    } else {
+      setSelectedProducts(
+        data?.data?.products?.filter((product) =>
+          selectedCategories.includes(product.category.id),
+        ),
+      );
+    }
+  }, [data, selectedCategories]);
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
@@ -36,13 +56,15 @@ const HomeContent: FC = () => {
       <PageHeader
         fetchedCategories={fetchedCategories?.data?.categories}
         isLoading={isLoadingCategories || isFetchingCategories}
+        selectedCategories={selectedCategories}
+        handleCategorySelect={handleCategorySelect}
       />
 
       <Flex justify="space-between" className="my-3">
         <Flex align="center" gap={10}>
           <RiShoppingBag3Line size={19} className="text-primary" />
           <Typography variant="body" className="font-bold">
-            Recent Products ({fetchedData?.data?.products?.length})
+            Recent Products ({selectedProducts?.length})
           </Typography>
         </Flex>
 
@@ -61,7 +83,7 @@ const HomeContent: FC = () => {
       <Flex
         vertical
         justify="space-between"
-        className={`w-full mt-5 mb-8 flex-col lg:flex-row`}
+        className={`w-full mt-5 mb-8 flex-col lg:flex-row ${!selectedProducts?.length && "h-[50vh]"}`}
       >
         <span className="flex flex-col w-full">
           <Row
@@ -71,27 +93,17 @@ const HomeContent: FC = () => {
             ]}
             className="lg:w-full"
           >
-            {fetchedData?.data?.products?.length &&
-              fetchedData?.data?.products?.map(
-                (product: any, index: number) => (
-                  <Col
-                    key={index}
-                    span={6}
-                    xs={24}
-                    sm={12}
-                    md={8}
-                    lg={8}
-                    xl={8}
-                  >
-                    <ProductCard product={product} />
-                  </Col>
-                ),
-              )}
+            {selectedProducts?.length &&
+              selectedProducts?.map((product: any, index: number) => (
+                <Col key={index} span={8} xs={24} sm={12} md={8} lg={12} xl={8}>
+                  <ProductCard product={product} />
+                </Col>
+              ))}
           </Row>
           <Button
             type="secondary"
             onClick={() => {}}
-            className={`m-auto my-3 ${!fetchedData?.data?.products && "hidden"}`}
+            className={`m-auto my-3 ${!selectedProducts?.length && "hidden"}`}
           >
             <FaChevronDown className="text-primary" size={12} />
             <span className="font-bold">Load More</span>

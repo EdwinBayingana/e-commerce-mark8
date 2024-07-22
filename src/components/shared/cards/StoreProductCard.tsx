@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { AuthBackgroundImage } from "@utils/images";
 import { Flex, Image } from "antd";
 import Typography from "../typography";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import useRedirection from "@utils/hooks/useRedirection";
+import { motion } from "framer-motion";
 
 const StoreProductCard = (product: any) => {
   const { redirectTo } = useRedirection();
-  const SavedIcon = product?.product?.isSaved ? IoMdHeart : IoMdHeartEmpty;
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const [animateHeart, setAnimateHeart] = useState<boolean>(false);
+
+  const SavedIcon = isSaved ? IoMdHeart : IoMdHeartEmpty;
+
+  const toggleSave = () => {
+    setIsSaved((prev) => !prev);
+    setAnimateHeart(true);
+  };
+
+  const heartVariants = {
+    initial: { scale: 1 },
+    animate: { scale: 1.3, transition: { duration: 0.2 } },
+    reset: { scale: 1, transition: { duration: 0.2 } },
+  };
 
   return (
     <Flex
@@ -26,7 +41,7 @@ const StoreProductCard = (product: any) => {
 
       <Flex justify="space-between" gap={7} className="p-3">
         <Flex vertical justify="normal" gap={8}>
-          <span className="max-w-[35vw] pro:max-w-[35vw] md:max-w-[10vw] lg:max-w-[7vw]">
+          <span className="max-w-[35vw] pro:max-w-[35vw] md:max-w-[10vw]">
             <Typography
               variant="body"
               className="font-semibold text-[10px] truncate whitespace-nowrap"
@@ -42,10 +57,20 @@ const StoreProductCard = (product: any) => {
         </Flex>
 
         <Flex align="center" gap={10}>
-          <SavedIcon
-            className={`${product?.product?.isSaved ? "text-primary" : "text-secondary"} border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg cursor-pointer`}
-            size={15}
-          />
+          <button
+            className={`${isSaved ? "text-primary" : "text-secondary"} flex border-[1.5px] border-borderColor h-10 w-10 rounded-lg cursor-pointer`}
+            onClick={toggleSave}
+          >
+            <motion.div
+              variants={heartVariants}
+              initial="initial"
+              animate={animateHeart ? "animate" : "reset"}
+              className="self-center justify-center mx-auto"
+              onAnimationComplete={() => setAnimateHeart(false)}
+            >
+              <SavedIcon size={15} />
+            </motion.div>
+          </button>
         </Flex>
       </Flex>
     </Flex>
