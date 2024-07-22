@@ -9,7 +9,7 @@ Follow these steps to set up the project locally:
 ### Step 1: Clone the repository
 
 ```sh
-# The repository link below is not accurate (for anonymity). 
+# The repository link below is not accurate (for anonymity).
 # Instead, use the link of the repository from which you are going through this documentation
 git clone https://github.com/🎭/e-commerce-mark8.git
 cd e-commerce-mark8
