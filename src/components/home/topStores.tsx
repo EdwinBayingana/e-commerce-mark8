@@ -17,7 +17,7 @@ const TopStores: FC<Props> = ({ stores }) => {
     <Flex
       vertical
       justify="normal"
-      className={`mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border ${!stores?.length && "h-[50vh]"}`}
+      className={`mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border h-full ${!stores?.length && "h-[50vh]"}`}
     >
       <Flex justify="space-between" className="m-4">
         <Flex align="center" gap={10}>

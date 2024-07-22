@@ -10,6 +10,7 @@ interface Props {
   isLoading?: boolean;
   handleCategorySelect: (category: string) => void;
   selectedCategories?: string[];
+  allItemsLength?: number;
 }
 
 const PageHeader: FC<Props> = ({
@@ -17,6 +18,7 @@ const PageHeader: FC<Props> = ({
   fetchedCategories,
   handleCategorySelect,
   selectedCategories,
+  allItemsLength,
 }) => {
   const inputPlaceholder = isStoreHeader
     ? "Search Store"
@@ -40,7 +42,7 @@ const PageHeader: FC<Props> = ({
           )}
         </Typography>
         <Typography variant="caption" className="text-textGray">
-          {isStoreHeader ? "54 Stores" : "12,932 Products"}
+          {allItemsLength}&nbsp;{isStoreHeader ? "Stores" : "Products"}
         </Typography>
       </>
     );

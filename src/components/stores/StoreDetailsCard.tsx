@@ -18,7 +18,7 @@ interface Props {
     image?: string;
   };
   storeCategories: any;
-  storeProducts: any[];
+  storeProducts: any;
 }
 
 const StoreDetailsComponent: FC<Props> = ({
@@ -154,7 +154,7 @@ const StoreDetailsComponent: FC<Props> = ({
             {storeProducts?.length &&
               storeProducts
                 ?.slice(0, 3)
-                ?.map((product, index) => (
+                ?.map((product: any, index: number) => (
                   <StoreProductCard key={index} product={product} />
                 ))}
           </Flex>

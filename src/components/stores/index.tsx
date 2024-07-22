@@ -7,14 +7,16 @@ import { useGetProductsQuery } from "@store/actions/product";
 import { useGetStoresQuery } from "@store/actions/store";
 import { Flex, Spin } from "antd";
 import React, { FC, useEffect, useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import Typography from "../shared/typography";
 
 import StoreDetailsComponent from "./StoreDetailsCard";
 
 const StoreContent: FC = () => {
   const { data, isLoading, isFetching } = useGetStoresQuery({});
-  const [fetchedData, setFetchedData] = useState<any>();
-  const [fetchedProducts, setFetchedProducts] = useState<any>();
+  const [fetchedData, setFetchedData] = useState<any[]>([]);
+  const [displayedStores, setDisplayedStores] = useState<any[]>([]);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const { data: storeProducts, isLoading: isLoadingStoreProducts } =
     useGetProductsQuery({});
@@ -26,9 +28,21 @@ const StoreContent: FC = () => {
   } = useGetCategoriesQuery({});
 
   useEffect(() => {
-    setFetchedProducts(storeProducts);
-    setFetchedData(data?.data);
-  }, [data, storeProducts]);
+    if (data) {
+      setFetchedData(data.data.stores);
+      setDisplayedStores(data.data.stores.slice(0, 3));
+    }
+  }, [data]);
+
+  const handleLoadMore = () => {
+    if (showAll) {
+      setDisplayedStores(fetchedData.slice(0, 3));
+      setShowAll(false);
+    } else {
+      setDisplayedStores(fetchedData);
+      setShowAll(true);
+    }
+  };
 
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
@@ -38,23 +52,42 @@ const StoreContent: FC = () => {
         fetchedCategories={fetchedCategories?.data?.categories}
         isLoading={isLoadingCategories || isFetchingCategories}
         handleCategorySelect={() => {}}
+        allItemsLength={data?.data?.stores?.length || 0}
       />
 
+      {isLoading ||
+        (isFetching && <Typography variant="body">Loading...</Typography>)}
+
       <Flex vertical gap={15}>
-        {fetchedData?.stores?.length &&
-          fetchedData?.stores?.map((store: any, index: any) => (
+        {displayedStores?.length &&
+          displayedStores.map((store: any, index: any) => (
             <StoreDetailsComponent
               key={index}
               store={store}
-              storeProducts={fetchedProducts?.data?.products}
+              storeProducts={storeProducts?.data?.products}
               storeCategories={fetchedCategories?.data?.categories}
             />
           ))}
       </Flex>
-      <Button type="secondary" onClick={() => {}} className="m-auto my-3">
-        <FaChevronDown className="text-primary" size={12} />
-        <span className="font-bold">Load More</span>
-      </Button>
+      {fetchedData.length > 3 && (
+        <Button
+          type="secondary"
+          onClick={handleLoadMore}
+          className="m-auto my-3"
+        >
+          {showAll ? (
+            <Flex gap={10} align="center">
+              <FaChevronUp className="text-primary" size={12} />
+              <span className="font-bold">See Less</span>
+            </Flex>
+          ) : (
+            <Flex gap={10} align="center">
+              <FaChevronDown className="text-primary" size={12} />
+              <span className="font-bold">Load More</span>
+            </Flex>
+          )}
+        </Button>
+      )}
 
       <OpenStoreHeader />
       <Spin
