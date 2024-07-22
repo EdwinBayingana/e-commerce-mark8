@@ -1,6 +1,6 @@
 import PageHeader from "@components/shared/PageHeader";
 import Typography from "@components/shared/typography";
-import { Col, Flex, Result, Row, Spin } from "antd";
+import { Col, Flex, Row, Spin } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { BiFilterAlt } from "react-icons/bi";
@@ -14,16 +14,8 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetStoresQuery } from "@store/actions/store";
 import { Product } from "@utils/types/product";
-import useRedirection from "@utils/hooks/useRedirection";
-import routes from "@utils/routes";
-import { clearToken, setToken } from "@store/reducers/app";
-import { useDispatch } from "react-redux";
-import { TOKEN_NAME } from "@utils/constants";
-import Cookies from "js-cookie";
 
 const HomeContent: FC = () => {
-  const { redirectTo } = useRedirection();
-  const dispatch = useDispatch();
   const { data, isLoading, isFetching } = useGetProductsQuery({});
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
@@ -150,27 +142,6 @@ const HomeContent: FC = () => {
 
         <TopStores stores={fetchedStores?.data?.stores || []} />
       </Flex>
-
-      {!data?.length && !isLoading ? (
-        <Result
-          subTitle={<span className="text-secondary">Try logging in.</span>}
-          extra={
-            <Button
-              type="primary"
-              onClick={() => {
-                Cookies.remove(TOKEN_NAME);
-                clearToken();
-                dispatch(setToken(undefined));
-                redirectTo(routes.login.url);
-              }}
-            >
-              Go to Login
-            </Button>
-          }
-        />
-      ) : (
-        <></>
-      )}
 
       <Spin
         spinning={isLoading || isFetching || isLoadingStores}
