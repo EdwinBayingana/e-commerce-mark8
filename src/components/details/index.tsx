@@ -32,10 +32,12 @@ const ProductDetailsContent: FC<Props> = ({ productId }) => {
     setProduct(data?.data);
   }, [data]);
 
-  const reducedSuggestedProducts = suggestedProducts?.data?.products?.slice(
-    0,
-    4,
-  );
+  const reducedSuggestedProducts = suggestedProducts?.data?.products
+    ?.filter(
+      (suggestedProduct) =>
+        suggestedProduct?.category?.id === product?.category?.id,
+    )
+    .slice(0, 4);
 
   const breadcrumbItems = [
     {

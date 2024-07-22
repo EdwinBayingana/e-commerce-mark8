@@ -1,6 +1,5 @@
 import { PrimaryLogoWithLabel } from "@components/logo";
 import Typography from "@components/shared/typography";
-import { dummyStores } from "@utils/data/stores";
 import { Flex, Input } from "antd";
 import React, { FC } from "react";
 import { BiStoreAlt } from "react-icons/bi";
@@ -9,12 +8,16 @@ import { RxMixerVertical } from "react-icons/rx";
 import { TbExternalLink } from "react-icons/tb";
 import { GoChevronRight } from "react-icons/go";
 
-const TopStores: FC = () => {
+interface Props {
+  stores: any;
+}
+
+const TopStores: FC<Props> = ({ stores }) => {
   return (
     <Flex
       vertical
       justify="normal"
-      className="mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border "
+      className={`mt-5 lg:my-0 lg:w-[30%] xl:w-[35%] rounded-2xl border ${!stores?.length && "h-[50vh]"}`}
     >
       <Flex justify="space-between" className="m-4">
         <Flex align="center" gap={10}>
@@ -46,8 +49,8 @@ const TopStores: FC = () => {
         />
       </span>
 
-      {dummyStores.length &&
-        dummyStores.map((store, index) => (
+      {stores?.length &&
+        stores?.slice(0, 7)?.map((store: any, index: number) => (
           <Flex key={index} justify="space-between" className="my-2 mx-4">
             <PrimaryLogoWithLabel
               gap={15}

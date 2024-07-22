@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AuthBackgroundImage } from "@utils/images";
 import { Flex, Image } from "antd";
 import Typography from "../typography";
@@ -8,13 +8,28 @@ import { IoMdHeart } from "react-icons/io";
 import useRedirection from "@utils/hooks/useRedirection";
 import CenteredPopup from "../modal/CenteredPopup";
 import useAnimateModal from "@utils/hooks/useAnimateModal";
+import { motion } from "framer-motion";
 
-const ProductCard = (product: any) => {
+const ProductCard = ({ product }: { product: any }) => {
   const { redirectTo } = useRedirection();
   const { handleAddToCart, isAnimating } = useAnimateModal();
 
-  const SavedIcon = product?.product?.isSaved ? IoMdHeart : IoMdHeartEmpty;
-  const unitPriceBefore = 12000;
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const [animateHeart, setAnimateHeart] = useState<boolean>(false);
+
+  const SavedIcon = isSaved ? IoMdHeart : IoMdHeartEmpty;
+  const unitPriceBefore = 25000;
+
+  const toggleSave = () => {
+    setIsSaved((prev) => !prev);
+    setAnimateHeart(true);
+  };
+
+  const heartVariants = {
+    initial: { scale: 1 },
+    animate: { scale: 1.3, transition: { duration: 0.2 } },
+    reset: { scale: 1, transition: { duration: 0.2 } },
+  };
 
   return (
     <>
@@ -24,11 +39,11 @@ const ProductCard = (product: any) => {
         className="border border-borderColor rounded-2xl"
       >
         <Image
-          src={product?.product?.thumbnail[0] || AuthBackgroundImage}
-          alt={`${product?.product?.name || "Awesomity logo"}`}
+          src={product?.thumbnail[0] || AuthBackgroundImage}
+          alt={`${product?.name || "Awesomity logo"}`}
           className="w-full min-h-[27vh] max-h-[27vh] 2xl:min-h-60 2xl:max-h-60 rounded-t-2xl object-cover cursor-pointer"
           preview={false}
-          onClick={() => redirectTo(`/product/${product?.product?.id}`)}
+          onClick={() => redirectTo(`/product/${product?.id}`)}
         />
 
         <Flex justify="space-between" gap={7} className="p-3">
@@ -38,12 +53,12 @@ const ProductCard = (product: any) => {
                 variant="body"
                 className="font-semibold text-[10px] line-clamp-1"
               >
-                {product?.product?.name}
+                {product?.name}
               </Typography>
             </span>
-            <Typography variant="body" className="font-bold">
+            <Typography variant="body" className="font-bold text-[10px]">
               <span className="text-primary">
-                {product?.product?.unitPrice?.toLocaleString() || 0}&nbsp;Rwf
+                {product?.unitPrice?.toLocaleString() || 0}&nbsp;Rwf
               </span>
               <span className="text-[10px] line-through text-textLightGray ml-2">
                 {unitPriceBefore?.toLocaleString() || 0}
@@ -57,10 +72,20 @@ const ProductCard = (product: any) => {
               size={16}
               onClick={handleAddToCart}
             />
-            <SavedIcon
-              className={`${product?.product?.isSaved ? "text-primary" : "text-secondary"} border-[1.5px] border-borderColor h-10 w-10 p-2.5 rounded-lg cursor-pointer`}
-              size={15}
-            />
+            <button
+              className={`${isSaved ? "text-primary" : "text-secondary"} flex border-[1.5px] border-borderColor h-10 w-10 rounded-lg cursor-pointer`}
+              onClick={toggleSave}
+            >
+              <motion.div
+                variants={heartVariants}
+                initial="initial"
+                animate={animateHeart ? "animate" : "reset"}
+                className="self-center justify-center mx-auto"
+                onAnimationComplete={() => setAnimateHeart(false)}
+              >
+                <SavedIcon size={15} />
+              </motion.div>
+            </button>
           </Flex>
         </Flex>
       </Flex>

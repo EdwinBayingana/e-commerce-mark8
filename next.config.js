@@ -5,7 +5,7 @@ const withTM = require("next-transpile-modules")([
 module.exports = withTM({
   reactStrictMode: true,
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "example.com", "picsum.photos"],
   },
   webpack(config) {
     return config;

@@ -3,17 +3,21 @@ import { Flex, Input } from "antd";
 import Typography from "@components/shared/typography";
 import { FiSearch } from "react-icons/fi";
 import { RxMixerVertical } from "react-icons/rx";
-import useSelection from "@utils/hooks/useSelection";
 
 interface Props {
   isStoreHeader?: boolean;
   fetchedCategories: any;
   isLoading?: boolean;
+  handleCategorySelect: (category: string) => void;
+  selectedCategories?: string[];
 }
 
-const PageHeader: FC<Props> = ({ isStoreHeader, fetchedCategories }) => {
-  const { selectedItem, handleSelectItem } = useSelection("");
-
+const PageHeader: FC<Props> = ({
+  isStoreHeader,
+  fetchedCategories,
+  handleCategorySelect,
+  selectedCategories,
+}) => {
   const inputPlaceholder = isStoreHeader
     ? "Search Store"
     : "What are you looking for?";
@@ -79,10 +83,15 @@ const PageHeader: FC<Props> = ({ isStoreHeader, fetchedCategories }) => {
       >
         {fetchedCategories?.length &&
           fetchedCategories?.map((filter: any, index: number) => (
-            <button key={index} onClick={() => handleSelectItem(filter)}>
+            <button
+              key={index}
+              onClick={() => {
+                handleCategorySelect(filter?.id);
+              }}
+            >
               <Typography
                 variant="body"
-                className={`${isStoreHeader && selectedItem === filter ? "border-secondary text-secondary" : isStoreHeader && selectedItem !== filter ? "border-textLightGray text-textGray" : selectedItem === filter ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
+                className={`${isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-secondary text-secondary" : isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-textLightGray text-textGray" : selectedCategories?.includes(filter?.id) ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
               >
                 {filter?.name}
               </Typography>

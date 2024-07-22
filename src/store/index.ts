@@ -19,8 +19,8 @@ import storage from "redux-persist/lib/storage";
 import { baseAPI } from "./api";
 import appReducer, { clearToken } from "./reducers/app";
 import userReducer, { logout } from "./reducers/users";
-import { useTheme } from "@utils/hooks/useTheme";
 import { PERSIST_KEY } from "@utils/constants";
+import { handle401Error } from "@utils/helpers/redirection";
 
 interface Payload {
   status?: number;
@@ -33,7 +33,6 @@ const rootReducer = combineReducers({
   [baseAPI.reducerPath]: baseAPI.reducer,
   userReducer,
   appReducer,
-  theme: useTheme.reducer,
 });
 
 const persistConfig = {
@@ -52,6 +51,8 @@ const rtkQueryErrorLogger: Middleware =
     if (typedAction?.payload?.status === 401) {
       api.dispatch(logout());
       api.dispatch(clearToken());
+      handle401Error();
+
       notification.open({
         type: "error",
         message:

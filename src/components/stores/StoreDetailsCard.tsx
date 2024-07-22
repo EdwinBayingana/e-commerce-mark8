@@ -153,7 +153,7 @@ const StoreDetailsComponent: FC<Props> = ({
           >
             {storeProducts?.length &&
               storeProducts
-                ?.slice(0, 5)
+                ?.slice(0, 3)
                 ?.map((product, index) => (
                   <StoreProductCard key={index} product={product} />
                 ))}
