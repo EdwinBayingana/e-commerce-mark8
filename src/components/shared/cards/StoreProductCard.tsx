@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { AuthBackgroundImage } from "@utils/images";
 import { Flex, Image } from "antd";
 import Typography from "../typography";
@@ -6,8 +6,13 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import useRedirection from "@utils/hooks/useRedirection";
 import { motion } from "framer-motion";
+import { Product } from "@utils/types/product";
 
-const StoreProductCard = (product: any) => {
+interface Props {
+  product: Product;
+}
+
+const StoreProductCard: FC<Props> = (product) => {
   const { redirectTo } = useRedirection();
   const [isSaved, setIsSaved] = useState<boolean>(false);
   const [animateHeart, setAnimateHeart] = useState<boolean>(false);

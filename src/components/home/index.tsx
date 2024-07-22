@@ -13,12 +13,13 @@ import { useGetProductsQuery } from "@store/actions/product";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetStoresQuery } from "@store/actions/store";
+import { Product } from "@utils/types/product";
 
 const HomeContent: FC = () => {
   const { data, isLoading, isFetching } = useGetProductsQuery({});
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [displayedProducts, setDisplayedProducts] = useState<any[]>([]);
-  const [allProducts, setAllProducts] = useState<any[]>([]);
+  const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [showAll, setShowAll] = useState<boolean>(false);
 
   const {
@@ -71,7 +72,7 @@ const HomeContent: FC = () => {
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
       <div className="content-wrapper w-full" />
       <PageHeader
-        fetchedCategories={fetchedCategories?.data?.categories}
+        fetchedCategories={fetchedCategories?.data?.categories || []}
         isLoading={isLoadingCategories || isFetchingCategories}
         selectedCategories={selectedCategories}
         handleCategorySelect={handleCategorySelect}
@@ -112,7 +113,7 @@ const HomeContent: FC = () => {
             className="lg:w-full"
           >
             {displayedProducts?.length &&
-              displayedProducts?.map((product: any, index: number) => (
+              displayedProducts?.map((product: Product, index: number) => (
                 <Col key={index} span={8} xs={24} sm={12} md={8} lg={12} xl={8}>
                   <ProductCard product={product} />
                 </Col>
@@ -139,7 +140,7 @@ const HomeContent: FC = () => {
           )}
         </Flex>
 
-        <TopStores stores={fetchedStores?.data?.stores} />
+        <TopStores stores={fetchedStores?.data?.stores || []} />
       </Flex>
 
       <Spin

@@ -2,7 +2,7 @@ import { Flex, Typography } from "antd";
 
 interface IconWithLabelProps {
   label: string;
-  Icon?: any;
+  Icon?: React.ElementType;
   iconColor?: string;
   containerGap?: number;
   containerClassName: string;
@@ -35,7 +35,7 @@ const IconWithLabel: React.FC<IconWithLabelProps> = ({
       className={containerClassName}
       onClick={onClick}
     >
-      <Icon size={iconSize} className={iconClassName} />
+      {Icon && <Icon size={iconSize} className={iconClassName} />}
 
       {label && <Typography className={labelClassName}>{label}</Typography>}
 

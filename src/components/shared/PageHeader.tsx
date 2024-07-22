@@ -3,10 +3,11 @@ import { Flex, Input } from "antd";
 import Typography from "@components/shared/typography";
 import { FiSearch } from "react-icons/fi";
 import { RxMixerVertical } from "react-icons/rx";
+import { Category } from "@utils/types/category";
 
 interface Props {
   isStoreHeader?: boolean;
-  fetchedCategories: any;
+  fetchedCategories: Category[];
   isLoading?: boolean;
   handleCategorySelect: (category: string) => void;
   selectedCategories?: string[];
@@ -84,7 +85,7 @@ const PageHeader: FC<Props> = ({
         className="overflow-x-auto scrollbar-hide w-full md:justify-center py-0.5"
       >
         {fetchedCategories?.length &&
-          fetchedCategories?.map((filter: any, index: number) => (
+          fetchedCategories?.map((filter, index) => (
             <button
               key={index}
               onClick={() => {

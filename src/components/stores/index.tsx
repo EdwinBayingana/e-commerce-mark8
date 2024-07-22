@@ -5,6 +5,7 @@ import PageHeader from "@components/shared/PageHeader";
 import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetProductsQuery } from "@store/actions/product";
 import { useGetStoresQuery } from "@store/actions/store";
+import { Store } from "@utils/types/store";
 import { Flex, Spin } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -14,8 +15,8 @@ import StoreDetailsComponent from "./StoreDetailsCard";
 
 const StoreContent: FC = () => {
   const { data, isLoading, isFetching } = useGetStoresQuery({});
-  const [fetchedData, setFetchedData] = useState<any[]>([]);
-  const [displayedStores, setDisplayedStores] = useState<any[]>([]);
+  const [fetchedData, setFetchedData] = useState<Store[]>([]);
+  const [displayedStores, setDisplayedStores] = useState<Store[]>([]);
   const [showAll, setShowAll] = useState<boolean>(false);
 
   const { data: storeProducts, isLoading: isLoadingStoreProducts } =
@@ -49,7 +50,7 @@ const StoreContent: FC = () => {
       <div className="content-wrapper w-full" />
       <PageHeader
         isStoreHeader={true}
-        fetchedCategories={fetchedCategories?.data?.categories}
+        fetchedCategories={fetchedCategories?.data?.categories || []}
         isLoading={isLoadingCategories || isFetchingCategories}
         handleCategorySelect={() => {}}
         allItemsLength={data?.data?.stores?.length || 0}
@@ -60,12 +61,12 @@ const StoreContent: FC = () => {
 
       <Flex vertical gap={15}>
         {displayedStores?.length &&
-          displayedStores.map((store: any, index: any) => (
+          displayedStores.map((store, index) => (
             <StoreDetailsComponent
               key={index}
               store={store}
-              storeProducts={storeProducts?.data?.products}
-              storeCategories={fetchedCategories?.data?.categories}
+              storeProducts={storeProducts?.data?.products || []}
+              storeCategories={fetchedCategories?.data?.categories || []}
             />
           ))}
       </Flex>

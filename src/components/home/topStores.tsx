@@ -7,9 +7,10 @@ import { FiSearch } from "react-icons/fi";
 import { RxMixerVertical } from "react-icons/rx";
 import { TbExternalLink } from "react-icons/tb";
 import { GoChevronRight } from "react-icons/go";
+import { Store } from "@utils/types/store";
 
 interface Props {
-  stores: any;
+  stores: Store[];
 }
 
 const TopStores: FC<Props> = ({ stores }) => {
@@ -50,7 +51,7 @@ const TopStores: FC<Props> = ({ stores }) => {
       </span>
 
       {stores?.length &&
-        stores?.slice(0, 7)?.map((store: any, index: number) => (
+        stores?.slice(0, 7)?.map((store, index) => (
           <Flex key={index} justify="space-between" className="my-2 mx-4">
             <PrimaryLogoWithLabel
               gap={15}

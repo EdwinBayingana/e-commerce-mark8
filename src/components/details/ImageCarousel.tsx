@@ -4,8 +4,8 @@ import { Col, Flex, Image, Row } from "antd";
 import React, { FC } from "react";
 
 interface Props {
-  productImages: any;
-  productName: any;
+  productImages: string[];
+  productName: string;
 }
 
 const ImageCarouselComponent: FC<Props> = ({ productImages, productName }) => {
