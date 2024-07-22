@@ -84,22 +84,21 @@ const PageHeader: FC<Props> = ({
         justify="flex-start"
         className="overflow-x-auto scrollbar-hide w-full md:justify-center py-0.5"
       >
-        {fetchedCategories?.length &&
-          fetchedCategories?.map((filter, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                handleCategorySelect(filter?.id);
-              }}
+        {fetchedCategories?.map((filter, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              handleCategorySelect(filter?.id);
+            }}
+          >
+            <Typography
+              variant="body"
+              className={`${isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-secondary text-secondary" : isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-textLightGray text-textGray" : selectedCategories?.includes(filter?.id) ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
             >
-              <Typography
-                variant="body"
-                className={`${isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-secondary text-secondary" : isStoreHeader && selectedCategories?.includes(filter?.id) ? "border-textLightGray text-textGray" : selectedCategories?.includes(filter?.id) ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
-              >
-                {filter?.name}
-              </Typography>
-            </button>
-          ))}
+              {filter?.name || ""}
+            </Typography>
+          </button>
+        ))}
       </Flex>
     </Flex>
   );
