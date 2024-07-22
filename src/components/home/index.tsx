@@ -76,7 +76,7 @@ const HomeContent: FC = () => {
         isLoading={isLoadingCategories || isFetchingCategories}
         selectedCategories={selectedCategories}
         handleCategorySelect={handleCategorySelect}
-        allItemsLength={data?.data?.products?.length || 0}
+        allItemsLength={data?.data?.products?.length}
       />
 
       <Flex justify="space-between" className="my-3">
@@ -123,7 +123,7 @@ const HomeContent: FC = () => {
             <Button
               type="secondary"
               onClick={handleLoadMore}
-              className="flex m-auto my-3"
+              className={`flex m-auto my-3 ${!displayedProducts.length && "hidden"}`}
             >
               {showAll ? (
                 <Flex gap={10} align="center">

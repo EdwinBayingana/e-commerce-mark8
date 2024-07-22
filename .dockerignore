@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.next
+*.md
+.git
+.husky
+.env
+*.ts
+*.tsx

@@ -53,7 +53,7 @@ const StoreContent: FC = () => {
         fetchedCategories={fetchedCategories?.data?.categories || []}
         isLoading={isLoadingCategories || isFetchingCategories}
         handleCategorySelect={() => {}}
-        allItemsLength={data?.data?.stores?.length || 0}
+        allItemsLength={data?.data?.stores?.length}
       />
 
       {isLoading ||
@@ -74,7 +74,7 @@ const StoreContent: FC = () => {
         <Button
           type="secondary"
           onClick={handleLoadMore}
-          className="m-auto my-3"
+          className={`m-auto my-3 ${!fetchedData.length && "hidden"}`}
         >
           {showAll ? (
             <Flex gap={10} align="center">
