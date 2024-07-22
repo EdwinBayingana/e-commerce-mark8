@@ -2,6 +2,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import Button from "@components/shared/button";
 import OpenStoreHeader from "@components/shared/OpenStoreHeader";
 import PageHeader from "@components/shared/PageHeader";
+import { useGetCategoriesQuery } from "@store/actions/category";
 import { useGetProductsQuery } from "@store/actions/product";
 import { useGetStoresQuery } from "@store/actions/store";
 import { Flex, Spin } from "antd";
@@ -18,6 +19,12 @@ const StoreContent: FC = () => {
   const { data: storeProducts, isLoading: isLoadingStoreProducts } =
     useGetProductsQuery({});
 
+  const {
+    data: fetchedCategories,
+    isLoading: isLoadingCategories,
+    isFetching: isFetchingCategories,
+  } = useGetCategoriesQuery({});
+
   useEffect(() => {
     setFetchedProducts(storeProducts);
     setFetchedData(data?.data);
@@ -26,7 +33,11 @@ const StoreContent: FC = () => {
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
       <div className="content-wrapper w-full" />
-      <PageHeader isStoreHeader={true} />
+      <PageHeader
+        isStoreHeader={true}
+        fetchedCategories={fetchedCategories?.data?.categories}
+        isLoading={isLoadingCategories || isFetchingCategories}
+      />
 
       <Flex vertical gap={15}>
         {fetchedData?.stores?.length &&
@@ -35,6 +46,7 @@ const StoreContent: FC = () => {
               key={index}
               store={store}
               storeProducts={fetchedProducts?.data?.products}
+              storeCategories={fetchedCategories?.data?.categories}
             />
           ))}
       </Flex>

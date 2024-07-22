@@ -33,7 +33,7 @@ const LoginForm: React.FC = () => {
     await login(data).then((res) => {
       if (!res?.error && res?.data?.data?.accessToken) {
         Cookies.set(TOKEN_NAME, res?.data?.data?.accessToken, {
-          expires: 1 / 48,
+          expires: 7,
         });
 
         dispatch(setToken(res?.data?.data?.accessToken));
