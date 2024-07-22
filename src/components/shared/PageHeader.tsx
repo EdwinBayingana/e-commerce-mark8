@@ -7,11 +7,12 @@ import useSelection from "@utils/hooks/useSelection";
 
 interface Props {
   isStoreHeader?: boolean;
+  fetchedCategories: any;
+  isLoading?: boolean;
 }
 
-const PageHeader: FC<Props> = ({ isStoreHeader }) => {
-  const filterOptions = ["All", "Vectors", "Icons", "Backgrounds"];
-  const { selectedItem, handleSelectItem } = useSelection(filterOptions[0]);
+const PageHeader: FC<Props> = ({ isStoreHeader, fetchedCategories }) => {
+  const { selectedItem, handleSelectItem } = useSelection("");
 
   const inputPlaceholder = isStoreHeader
     ? "Search Store"
@@ -76,16 +77,17 @@ const PageHeader: FC<Props> = ({ isStoreHeader }) => {
         justify="flex-start"
         className="overflow-x-auto scrollbar-hide w-full md:justify-center py-0.5"
       >
-        {filterOptions?.map((filter, index) => (
-          <button key={index} onClick={() => handleSelectItem(filter)}>
-            <Typography
-              variant="body"
-              className={`${isStoreHeader && selectedItem === filter ? "border-secondary text-secondary" : isStoreHeader && selectedItem !== filter ? "border-textLightGray text-textGray" : selectedItem === filter ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
-            >
-              {filter}
-            </Typography>
-          </button>
-        ))}
+        {fetchedCategories?.length &&
+          fetchedCategories?.map((filter: any, index: number) => (
+            <button key={index} onClick={() => handleSelectItem(filter)}>
+              <Typography
+                variant="body"
+                className={`${isStoreHeader && selectedItem === filter ? "border-secondary text-secondary" : isStoreHeader && selectedItem !== filter ? "border-textLightGray text-textGray" : selectedItem === filter ? "text-white" : "border-textGray text-textGray"} transition-all duration-500 border py-1 px-4 rounded-full w-full whitespace-nowrap !text-[8.5px]`}
+              >
+                {filter?.name}
+              </Typography>
+            </button>
+          ))}
       </Flex>
     </Flex>
   );

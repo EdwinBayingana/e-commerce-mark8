@@ -11,10 +11,16 @@ import Button from "@components/shared/button";
 import { FaChevronDown } from "react-icons/fa6";
 import { useGetProductsQuery } from "@store/actions/product";
 import { LoadingOutlined } from "@ant-design/icons";
+import { useGetCategoriesQuery } from "@store/actions/category";
 
 const HomeContent: FC = () => {
   const [fetchedData, setFetchedData] = useState<any>();
   const { data, isLoading, isFetching } = useGetProductsQuery({});
+  const {
+    data: fetchedCategories,
+    isLoading: isLoadingCategories,
+    isFetching: isFetchingCategories,
+  } = useGetCategoriesQuery({});
 
   useEffect(() => {
     setFetchedData(data);
@@ -23,7 +29,10 @@ const HomeContent: FC = () => {
   return (
     <Flex vertical justify="normal" className="2xl:max-w-[1600px] 2xl:mx-auto">
       <div className="content-wrapper w-full" />
-      <PageHeader />
+      <PageHeader
+        fetchedCategories={fetchedCategories?.data?.categories}
+        isLoading={isLoadingCategories || isFetchingCategories}
+      />
 
       <Flex justify="space-between" className="my-3">
         <Flex align="center" gap={10}>

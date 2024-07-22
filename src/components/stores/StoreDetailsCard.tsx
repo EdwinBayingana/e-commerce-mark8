@@ -17,12 +17,15 @@ interface Props {
     description?: string;
     image?: string;
   };
+  storeCategories: any;
   storeProducts: any[];
 }
 
-const StoreDetailsComponent: FC<Props> = ({ store, storeProducts }) => {
-  const options = ["All", "Vectors", "Icons", "Backgrounds"];
-
+const StoreDetailsComponent: FC<Props> = ({
+  store,
+  storeProducts,
+  storeCategories,
+}) => {
   return (
     <Flex
       vertical
@@ -96,18 +99,19 @@ const StoreDetailsComponent: FC<Props> = ({ store, storeProducts }) => {
 
               <Flex
                 gap={10}
-                className="scrollbar-hide w-full overflow-x-auto py-0.5"
+                className="scrollbar-hide w-full md:w-[95%]  overflow-x-auto py-0.5"
               >
-                {options?.map((filter, index) => (
-                  <button key={index}>
-                    <Typography
-                      variant="body"
-                      className={`border border-textLightGray text-textGray !text-[8.5px] py-0.5 px-4 rounded-full w-full whitespace-nowrap`}
-                    >
-                      {filter}
-                    </Typography>
-                  </button>
-                ))}
+                {storeCategories?.length &&
+                  storeCategories?.map((category: any, index: number) => (
+                    <button key={index}>
+                      <Typography
+                        variant="body"
+                        className={`border border-textLightGray text-textGray !text-[8.5px] py-0.5 px-4 rounded-full w-full whitespace-nowrap`}
+                      >
+                        {category?.name}
+                      </Typography>
+                    </button>
+                  ))}
               </Flex>
             </Flex>
 

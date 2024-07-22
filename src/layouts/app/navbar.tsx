@@ -132,7 +132,7 @@ const NavbarComponent: FC<NavbarProps> = ({ handleOpenCartDrawer }) => {
           </span>
         </Flex>
 
-        <span className="flex gap-6 xxs:gap-10 pro:xxs:gap-12 miniTab:gap-14 md:hidden">
+        <span className="flex gap-9 xxs:gap-11 pro:gap-12 miniTab:gap-14 md:hidden">
           {allIcons?.map((item, index) => {
             const isSelected = pathname === item?.pathname;
             const hideIsHomeIcon =
