@@ -38,13 +38,7 @@ npm run build
 
 ### Step 4: Update the .env file
 
-Remember to replace the **NEXT_PUBLIC_API_URL** value in the .env file.
-
-Example
-
-```bash
-NEXT_PUBLIC_API_URL=https://api.example.com
-```
+Remember to replace these values in the .env file as demonstrated in the .env.example file.
 
 ## Congratulations!
 
